@@ -1,0 +1,35 @@
+{
+  "GameList": {
+    "title": "Giochi di Bevute"
+  },
+  "Login": {
+    "title": "Accesso",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Password",
+    "loginButton": "Accesso"
+  },
+  "Register": {
+    "title": "Registro",
+    "usernamePlaceholder": "Nome utente",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Password",
+    "registerButton": "Registro"
+  },
+  "ManageCategories": {
+    "manageCategoriesTitle": "Gestione delle categorie",
+    "createCategory": "Crea categoria",
+    "categories": "Categorie",
+    "edit": "Modifica",
+    "delete": "Cancellare"
+  },
+  "CreateCategoryModal": {
+    "createCategoryTitle": "Crea categoria",
+    "createCategoryButton": "Crea categoria",
+    "cancelButton": "Annullamento"
+  },
+  "EditCategoryModal": {
+    "editCategoryTitle": "Modifica categoria",
+    "updateCategoryButton": "Categoria di aggiornamento",
+    "cancelButton": "Annullamento"
+  }
+}

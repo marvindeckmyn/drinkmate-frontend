@@ -1,0 +1,94 @@
+{
+  "GameList": {
+    "title": "Drinking Games",
+    "minPlayers": "players"
+  },
+  "GameDetails": {
+    "category": "Category",
+    "minPlayers": "Minimum players",
+    "creator": "Creator",
+    "alias": "Also known as",
+    "description": "Description",
+    "necessities": "Necessities",
+    "details": "Details"
+  },
+  "SubmitGame": {
+    "title": "Submit a Drinking Game",
+    "login": "You need to be logged in to submit a drinking game."
+  },
+  "AdminGeneral": {
+    "title": "Admin General",
+    "manageUserAdminPrivileges": "Manage User Admin Privileges",
+    "admin": "Admin",
+    "notAdmin": "Not Admin",
+    "grantAdmin": "Grant Admin",
+    "revokeAdmin": "Revoke Admin"
+  },
+  "Sidebar": {
+    "games": "Drinking Games",
+    "adminDashboard": "Admin Dashboard",
+    "submitAGame": "Submit A Game",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "AdminDashboard": {
+    "title": "Admin Dashboard",
+    "general": "General",
+    "categories": "Categories",
+    "submittedGames": "Submitted Games",
+    "games": "Drinking Games"
+  },
+  "Login": {
+    "title": "Login",
+    "identifierPlaceholder": "Username/E-mail",
+    "passwordPlaceholder": "Password",
+    "loginButton": "Login",
+    "dontHaveAccount": "You don't have an account yet?",
+    "registerLink": "Register here."
+  },
+  "Register": {
+    "title": "Register",
+    "usernamePlaceholder": "Username",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Password",
+    "registerButton": "Register",
+    "alreadyHaveAccount": "You already have an account?",
+    "loginLink": "Login here.",
+    "confirmPasswordPlaceholder": "Confirm password"
+  },
+  "ManageCategories": {
+    "manageCategoriesTitle": "Manage Categories",
+    "createCategory": "Create Category",
+    "categories": "Categories",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "CreateCategoryModal": {
+    "createCategoryTitle": "Create Category",
+    "createCategoryButton": "Create Category",
+    "cancelButton": "Cancel"
+  },
+  "EditCategoryModal": {
+    "editCategoryTitle": "Edit Category",
+    "updateCategoryButton": "Update Category",
+    "cancelButton": "Cancel"
+  },
+  "CreateGameModal": {
+    "createGameButton": "Create Drinking Game",
+    "language": "Language",
+    "gameTitle": "Game Title",
+    "alias": "Alias",
+    "category": "Category",
+    "playerCount": "Player Count",
+    "image": "Image",
+    "description": "Description",
+    "necessities": "Necessities",
+    "removeNecessityButton": "Remove Necessity",
+    "addNecessityButton": "Add Necessity",
+    "cancelButton": "Cancel"
+  },
+  "ManageGames": {
+    "title": "Manage Drinking Games",
+    "gamesTitle": "Drinking Games"
+  }
+}

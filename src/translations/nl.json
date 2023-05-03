@@ -1,0 +1,94 @@
+{
+  "GameList": {
+    "title": "Drankspelletjes",
+    "minPlayers": "spelers"
+  },
+  "GameDetails": {
+    "category": "Categorie",
+    "minPlayers": "Minimum aantal spelers",
+    "creator": "Maker",
+    "alias": "Ook gekend als",
+    "description": "Beschrijving",
+    "necessities": "Benodigdheden",
+    "details": "Details"
+  },
+  "SubmitGame": {
+    "title": "Creëer een Drankspelletje",
+    "login": "Je moet ingelogd zijn om een drankspelletje te creëeren."
+  },
+  "AdminGeneral": {
+    "title": "Admin Algemeen",
+    "manageUserAdminPrivileges": "Beheer van gebruikersrechten",
+    "admin": "Admin",
+    "notAdmin": "Geen Admin",
+    "grantAdmin": "Geef Admin",
+    "revokeAdmin": "Trek Admin in"
+  },
+  "Sidebar": {
+    "games": "Drankspelletjes",
+    "adminDashboard": "Admin Dashboard",
+    "submitAGame": "Maak een spel",
+    "login": "Inloggen",
+    "logout": "Uitloggen"
+  },
+  "AdminDashboard": {
+    "title": "Admin Dashboard",
+    "general": "Algemeen",
+    "categories": "Categorieën",
+    "submittedGames": "Ingezonden Spellen",
+    "games": "Drankspelletjes"
+  },
+  "Login": {
+    "title": "Inloggen",
+    "identifierPlaceholder": "Gebruikersnaam/E-mail",
+    "passwordPlaceholder": "Wachtwoord",
+    "loginButton": "Inloggen",
+    "dontHaveAccount": "Heb je nog geen account?",
+    "registerLink": "Registreer hier."
+  },
+  "Register": {
+    "title": "Registreren",
+    "usernamePlaceholder": "Gebruikersnaam",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Wachtwoord",
+    "registerButton": "Registreren",
+    "alreadyHaveAccount": "Heb je al een account?",
+    "loginLink": "Log hier in.",
+    "confirmPasswordPlaceholder": "Bevestig wachtwoord"
+  },
+  "ManageCategories": {
+    "manageCategoriesTitle": "Categorieën beheren",
+    "createCategory": "Categorie aanmaken",
+    "categories": "Categorieën",
+    "edit": "Bewerk",
+    "delete": "Verwijder"
+  },
+  "CreateCategoryModal": {
+    "createCategoryTitle": "Categorie aanmaken",
+    "createCategoryButton": "Categorie aanmaken",
+    "cancelButton": "Annuleren"
+  },
+  "EditCategoryModal": {
+    "editCategoryTitle": "Categorie bewerken",
+    "updateCategoryButton": "Update Categorie",
+    "cancelButton": "Annuleren"
+  },
+  "CreateGameModal": {
+    "createGameButton": "Maak Drankspelletje",
+    "language": "Taal",
+    "gameTitle": "Spel Titel",
+    "alias": "Alias",
+    "category": "Categorie",
+    "playerCount": "Aantal Spelers",
+    "image": "Afbeelding",
+    "description": "Beschrijving",
+    "necessities": "Benodigdheden",
+    "removeNecessityButton": "Benodigdheid Verwijderen",
+    "addNecessityButton": "Benodigdheid Toevoegen",
+    "cancelButton": "Annuleren"
+  },
+  "ManageGames": {
+    "title": "Beheer Drankspelletjes",
+    "gamesTitle": "Drankspelletjes"
+  }
+}

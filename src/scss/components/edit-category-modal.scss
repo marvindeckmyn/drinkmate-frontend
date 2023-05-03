@@ -1,0 +1,74 @@
+@import '../variables';
+
+.edit-category-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+
+    label {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid $grey;
+      border-radius: 4px;
+    }
+  }
+
+  button {
+    background-color: $light-purple;
+    color: $white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+
+    &:hover {
+      background-color: $hover-color;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled {
+      background-color: $grey;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  button + button {
+    margin-left: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .create-category-modal {
+    h2 {
+      font-size: 2rem;
+    }
+  }
+}

@@ -1,0 +1,134 @@
+@import '../variables';
+
+.game-more-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: $dark-purple;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: $light-purple;
+  }
+
+  .img-wrapper {
+    width: 100%;
+    max-width: 359.99px;
+    position: relative;
+    margin-bottom: 1rem;
+
+    img {
+      display: block;
+      border-radius: 8px;
+      width: 100%;
+      height: auto;
+      position: relative;
+      max-height: 202.49px;
+      object-fit: cover;
+    }
+  }
+
+  p.alias {
+    font-size: 1rem;
+    font-weight: bold;
+    color: $dark-purple;
+    margin-bottom: 1rem;
+  }
+
+  .content-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem;
+    background-color: $secondary-color;
+    border-radius: 8px;
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      text-align: justify;
+
+      ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+
+        li {
+          font-size: 1rem;
+          text-align: left;
+          padding: 0.25rem 0;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+  }
+
+  ul.necessities-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    li {
+      font-size: 1rem;
+      background-color: $light-purple;
+      color: $white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    .img-wrapper {
+      max-width: 100%;
+    }
+
+    p.alias {
+      font-size: 0.9rem;
+    }
+
+    .content-container {
+      max-width: 100%;
+      padding: 1rem;
+
+      p {
+        font-size: 0.9rem;
+
+        ul {
+          li {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    ul.necessities-list {
+      li {
+        font-size: 0.9rem;
+        padding: 0.25rem 0.4rem;
+      }
+    }
+  }
+}

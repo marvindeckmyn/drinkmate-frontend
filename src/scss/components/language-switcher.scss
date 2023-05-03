@@ -1,0 +1,46 @@
+.language-switcher {
+  .select-wrapper {
+    position: relative;
+    display: inline-block;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin-right: 1.2rem;
+  }
+
+  select {
+    appearance: none;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
+    padding: 2px 10px 2px 15px;
+    outline: none;
+    width: 100%;
+  }
+
+  .select-wrapper::before {
+    content: '▼';
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    pointer-events: none;
+  }
+
+  select:focus ~ .select-wrapper::before {
+    color: #000;
+  }
+
+  select option {
+    background-color: #fff;
+    color: #000;
+    padding: 2px 8px;
+  }
+}

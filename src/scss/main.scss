@@ -1,0 +1,31 @@
+@import './reset';
+@import './variables';
+@import './components/game-list.scss';
+@import './components/sidebar.scss';
+@import './components/language-switcher.scss';
+@import './components/header.scss';
+@import './components/login.scss';
+@import './components/register.scss';
+@import './components/admin-dashboard.scss';
+@import './components/admin-general.scss';
+@import './components/game-details.scss';
+@import './components/submit-game.scss';
+@import './components/manage-categories.scss';
+@import './components/create-category-modal.scss';
+@import './components/edit-category-modal.scss';
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.main {
+  padding: 1rem;
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @media (min-width: 768px) {
+    margin-left: 260px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}

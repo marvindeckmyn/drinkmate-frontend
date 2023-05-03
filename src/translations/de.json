@@ -1,0 +1,35 @@
+{
+  "GameList": {
+    "title": "Trinkspiele"
+  },
+  "Login": {
+    "title": "Anmeldung",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Passwort",
+    "loginButton": "Anmeldung"
+  },
+  "Register": {
+    "title": "Register",
+    "usernamePlaceholder": "Benutzername",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Passwort",
+    "registerButton": "Register"
+  },
+  "ManageCategories": {
+    "manageCategoriesTitle": "Kategorien verwalten",
+    "createCategory": "Kategorie erstellen",
+    "categories": "Kategorien",
+    "edit": "Bearbeiten",
+    "delete": "Löschen"
+  },
+  "CreateCategoryModal": {
+    "createCategoryTitle": "Kategorie erstellen",
+    "createCategoryButton": "Kategorie erstellen",
+    "cancelButton": "Abbrechen"
+  },
+  "EditCategoryModal": {
+    "editCategoryTitle": "Kategorie bearbeiten",
+    "updateCategoryButton": "Kategorie aktualisieren",
+    "cancelButton": "Abbrechen"
+  }
+}

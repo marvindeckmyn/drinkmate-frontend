@@ -1,0 +1,69 @@
+@import '../variables';
+
+.submit-game {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input,
+    textarea {
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid $grey;
+      border-radius: 4px;
+      &:focus {
+        border-color: $dark-purple;
+      }
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: $light-purple;
+      color: $white;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    form {
+      input,
+      textarea {
+        font-size: 0.875rem;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      textarea {
+        min-height: 100px;
+      }
+
+      button {
+        font-size: 0.875rem;
+        padding: 0.25rem 0.5rem;
+      }
+    }
+  }
+}

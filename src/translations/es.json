@@ -1,0 +1,35 @@
+{
+  "GameList": {
+    "title": "Juegos de Beber"
+  },
+  "Login": {
+    "title": "Inicio de sesión",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "loginButton": "Inicio de sesión"
+  },
+  "Register": {
+    "title": "Regístrese en",
+    "usernamePlaceholder": "Nombre de usuario",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "registerButton": "Regístrese en"
+  },
+  "ManageCategories": {
+    "manageCategoriesTitle": "Gestionar categorías",
+    "createCategory": "Crear categoría",
+    "categories": "Categorías",
+    "edit": "Editar",
+    "delete": "Borrar"
+  },
+  "CreateCategoryModal": {
+    "createCategoryTitle": "Crear categoría",
+    "createCategoryButton": "Crear categoría",
+    "cancelButton": "Cancelar"
+  },
+  "EditCategoryModal": {
+    "editCategoryTitle": "Editar categoría",
+    "updateCategoryButton": "Actualizar categoría",
+    "cancelButton": "Cancelar"
+  }
+}

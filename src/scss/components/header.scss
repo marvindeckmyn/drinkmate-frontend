@@ -1,0 +1,38 @@
+@import '../variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: $light-purple;
+  color: $white;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  transition: top 0.3s ease-in-out;
+
+  &.visible {
+    top: 0;
+  }
+
+  &:not(.visible) {
+    top: -60px;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .language-switcher {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    display: none;
+  }
+}

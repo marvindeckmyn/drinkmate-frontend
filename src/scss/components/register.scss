@@ -1,0 +1,81 @@
+@import '../variables';
+
+.register {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      font-size: 1rem;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid $grey;
+      border-radius: 4px;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 10px;
+      background-color: $light-purple;
+      color: $white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    font-size: 0.9rem;
+
+    a {
+      color: $light-purple;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $hover-color;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 1rem 0.5rem;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    form {
+      input {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+
+      button {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+}

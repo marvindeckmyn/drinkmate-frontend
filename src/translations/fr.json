@@ -1,0 +1,35 @@
+{
+  "GameList": {
+    "title": "Jeux à Boire"
+  },
+  "Login": {
+    "title": "Connexion",
+    "emailPlaceholder": "Courrier électronique",
+    "passwordPlaceholder": "Mot de passe",
+    "loginButton": "Connexion"
+  },
+  "Register": {
+    "title": "Registre",
+    "usernamePlaceholder": "Nom d'utilisateur",
+    "emailPlaceholder": "Courrier électronique",
+    "passwordPlaceholder": "Mot de passe",
+    "registerButton": "Registre"
+  },
+  "ManageCategories": {
+    "manageCategoriesTitle": "Gérer les catégories",
+    "createCategory": "Créer une catégorie",
+    "categories": "Catégories",
+    "edit": "Editer",
+    "delete": "Supprimer"
+  },
+  "CreateCategoryModal": {
+    "createCategoryTitle": "Créer une catégorie",
+    "createCategoryButton": "Créer une catégorie",
+    "cancelButton": "Annuler"
+  },
+  "EditCategoryModal": {
+    "editCategoryTitle": "Modifier la catégorie",
+    "updateCategoryButton": "Catégorie de mise à jour",
+    "cancelButton": "Annuler"
+  }
+}
