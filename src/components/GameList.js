@@ -1,25 +1,91 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import config from '../config';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import 'rc-slider/assets/index.css';
+import Slider from 'rc-slider';
 
 const GameList = () => {
   const [games, setGames] = useState([]);
+  const [categories, setCategories] = useState([]);
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
+  const [search, setSearch] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState(new Set());
+  const [minPlayerCount, setMinPlayerCount] = useState('');
+  const [maxPlayerCount, setMaxPlayerCount] = useState('');
+  const [minAvailablePlayerCount, setMinAvailablePlayerCount] = useState(1);
+  const [maxAvailablePlayerCount, setMaxAvailablePlayerCount] = useState(20);
+
+  const handleSearchInputChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleCategoryChange = (categoryId, isChecked) => {
+    const updatedCategories = new Set(selectedCategories);
+    if (isChecked) {
+      updatedCategories.add(categoryId);
+    } else {
+      updatedCategories.delete(categoryId);
+    }
+    setSelectedCategories(updatedCategories);
+  };
+
+  const getTranslatedName = useCallback((translations, defaultValue) => {
+    if (translations && translations.length > 0) {
+      const languageCode = i18n.language;
+      const translation = translations.find((t) => t.code === languageCode);
+      return translation ? translation.name : defaultValue;
+    }
+    return defaultValue;
+  }, [i18n.language]);
+  
+
+  const filteredGames = useCallback(() => {
+    const lowerCaseSearch = search.toLowerCase();
+
+    return games.filter((game) => {
+      const translatedName = getTranslatedName(game.translations, game.name).toLowerCase();
+      const gameAlias = game.alias ? game.alias.toLowerCase() : '';
+      const categoryMatches = selectedCategories.size === 0 || selectedCategories.has(game.category_id);
+      const playerCountMatches = (!minPlayerCount || game.player_count >= minPlayerCount) && (!maxPlayerCount || game.player_count <= maxPlayerCount);
+
+      return (
+        (translatedName.includes(lowerCaseSearch) || gameAlias.includes(lowerCaseSearch)) &&
+        categoryMatches &&
+        playerCountMatches
+      );
+    });
+  }, [search, games, getTranslatedName, selectedCategories, minPlayerCount, maxPlayerCount]);
+  
 
   useEffect(() => {
     const fetchGames = async () => {
       try {
         const response = await axios.get(`${config.API_BASE_URL}/api/games`);
+        const minCount = Math.min(...response.data.map((game) => game.player_count));
+        const maxCount = Math.max(...response.data.map((game) => game.player_count));
+
         setGames(response.data);
-      } catch(err) {
+        setMinAvailablePlayerCount(minCount);
+        setMaxAvailablePlayerCount(maxCount);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${config.API_BASE_URL}/api/categories`);
+        setCategories(response.data);
+      } catch (err) {
         console.error(err);
       }
     };
 
     fetchGames();
+    fetchCategories();
   }, [language]);
 
   useEffect(() => {
@@ -34,21 +100,56 @@ const GameList = () => {
     };
   }, [i18n]);
 
-  const getTranslatedName = (translations, defaultValue) => {
-    if (translations && translations.length > 0) {
-      const languageCode = i18n.language;
-      const translation = translations.find((t) => t.code === languageCode);
-      return translation ? translation.name : defaultValue;
-    }
-    return defaultValue;
-  };
-
   return (
     <div className="main">
       <div className="game-list">
         <h1>{t('GameList.title')}</h1>
+        <input
+          type="text"
+          className="search-bar"
+          placeholder={t('GameList.searchPlaceholder')}
+          value={search}
+          onChange={handleSearchInputChange}
+        />
+        <div className="filters">
+          <div className="category-filter">
+            <h3>{t('GameList.categories')}</h3>
+            {categories.map((category) => (
+              <label key={category.id}>
+                <input
+                  type="checkbox"
+                  checked={selectedCategories.has(category.id)}
+                  onChange={(e) => handleCategoryChange(category.id, e.target.checked)}
+                />
+                {getTranslatedName(category.translations, category.name)}
+              </label>
+            ))}
+          </div>
+          <div className="player-count-filter">
+            <h3>{t('GameList.minCountPlayers')}</h3>
+            <div className="player-count-slider">
+              <Slider
+                range
+                min={minAvailablePlayerCount}
+                max={maxAvailablePlayerCount}
+                defaultValue={[minAvailablePlayerCount, maxAvailablePlayerCount]}
+                onChange={(value) => {
+                  setMinPlayerCount(value[0]);
+                  setMaxPlayerCount(value[1]);
+                }}
+                allowCross={false}
+              />
+            </div>
+            <div>
+              {minPlayerCount || minAvailablePlayerCount}
+            </div>
+            <div>
+              {maxPlayerCount || maxAvailablePlayerCount}
+            </div>
+          </div>
+        </div>
         <ul>
-          {games.map(game => (
+          {filteredGames().map((game) => (
             <li key={game.id}>
               <Link to={`/games/${game.id}`}>
                 <div className="img-wrapper">

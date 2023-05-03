@@ -1,7 +1,10 @@
 {
   "GameList": {
     "title": "Drankspelletjes",
-    "minPlayers": "spelers"
+    "minPlayers": "spelers",
+    "minCountPlayers": "Minimum spelers",
+    "searchPlaceholder": "Zoek voor drankspelletjes...",
+    "categories": "Categorieën"
   },
   "GameDetails": {
     "category": "Categorie",

@@ -1,7 +1,10 @@
 {
   "GameList": {
     "title": "Drinking Games",
-    "minPlayers": "players"
+    "minPlayers": "players",
+    "minCountPlayers": "Minimum players",
+    "searchPlaceholder": "Search for drinking games...",
+    "categories": "Categories"
   },
   "GameDetails": {
     "category": "Category",
