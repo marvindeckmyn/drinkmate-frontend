@@ -11,7 +11,22 @@ import it from './translations/it.json';
 import es from './translations/es.json';
 import nl from './translations/nl.json';
 
-const savedLanguage = localStorage.getItem('language') || undefined;
+const getSupportedLanguage = (detectedLanguage) => {
+  const supportedLanguages = {
+    'en-US': 'en',
+    'en-GB': 'en',
+    'de-DE': 'de',
+    'fr-FR': 'fr',
+    'it-IT': 'it',
+    'es-ES': 'es',
+    'nl-NL': 'nl',
+    'nl-BE': 'nl',
+  };
+  
+  return supportedLanguages[detectedLanguage] || 'en';
+};
+
+const savedLanguage = localStorage.getItem('language') || getSupportedLanguage(navigator.language);
 
 i18n
   .use(Backend)
@@ -28,7 +43,12 @@ i18n
     },
     fallbackLng: 'en',
     lng: savedLanguage,
-
+    detection: {
+      order: ['localStorage', 'navigator'],
+      lookupLocalStorage: 'language',
+      checkWhitelist: true,
+    },
+    whitelist: ['en', 'de', 'fr', 'it', 'es', 'nl'],
     interpolation: {
       escapeValue: false,
     },
