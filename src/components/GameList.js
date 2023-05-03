@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import 'rc-slider/assets/index.css';
 import Slider from 'rc-slider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
 const GameList = () => {
   const [games, setGames] = useState([]);
@@ -17,6 +19,10 @@ const GameList = () => {
   const [maxPlayerCount, setMaxPlayerCount] = useState('');
   const [minAvailablePlayerCount, setMinAvailablePlayerCount] = useState(1);
   const [maxAvailablePlayerCount, setMaxAvailablePlayerCount] = useState(20);
+  const [showFilters, setShowFilters] = useState(false);
+  const sliderWidth = 100;
+  const minLabelPosition = (minPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth;
+  const maxLabelPosition = (maxPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth;
 
   const handleSearchInputChange = (event) => {
     setSearch(event.target.value);
@@ -104,50 +110,66 @@ const GameList = () => {
     <div className="main">
       <div className="game-list">
         <h1>{t('GameList.title')}</h1>
-        <input
-          type="text"
-          className="search-bar"
-          placeholder={t('GameList.searchPlaceholder')}
-          value={search}
-          onChange={handleSearchInputChange}
-        />
+        <div className="search-bar-wrapper">
+          <input
+            type="text"
+            className="search-bar"
+            placeholder={t('GameList.searchPlaceholder')}
+            value={search}
+            onChange={handleSearchInputChange}
+          />
+          <FontAwesomeIcon className="search-icon" icon={faSearch} />
+          <button
+            className="filter-toggle"
+            onClick={() => setShowFilters(!showFilters)}
+            title={t('GameList.toggleFilters')}
+          >
+            <FontAwesomeIcon icon={faSlidersH} />
+          </button>
+        </div>
+      {showFilters && (
         <div className="filters">
           <div className="category-filter">
             <h3>{t('GameList.categories')}</h3>
-            {categories.map((category) => (
-              <label key={category.id}>
-                <input
-                  type="checkbox"
-                  checked={selectedCategories.has(category.id)}
-                  onChange={(e) => handleCategoryChange(category.id, e.target.checked)}
-                />
-                {getTranslatedName(category.translations, category.name)}
-              </label>
-            ))}
+            <div className="category-flexbox">
+              {categories.map((category) => (
+                <label key={category.id}>
+                  <input
+                    type="checkbox"
+                    checked={selectedCategories.has(category.id)}
+                    onChange={(e) => handleCategoryChange(category.id, e.target.checked)}
+                  />
+                  {getTranslatedName(category.translations, category.name)}
+                </label>
+              ))}
+            </div>
           </div>
           <div className="player-count-filter">
             <h3>{t('GameList.minCountPlayers')}</h3>
-            <div className="player-count-slider">
-              <Slider
-                range
-                min={minAvailablePlayerCount}
-                max={maxAvailablePlayerCount}
-                defaultValue={[minAvailablePlayerCount, maxAvailablePlayerCount]}
-                onChange={(value) => {
-                  setMinPlayerCount(value[0]);
-                  setMaxPlayerCount(value[1]);
-                }}
-                allowCross={false}
-              />
-            </div>
-            <div>
-              {minPlayerCount || minAvailablePlayerCount}
-            </div>
-            <div>
-              {maxPlayerCount || maxAvailablePlayerCount}
+            <div className="player-count-wrapper">
+              <div className="min-player-count" style={{ left: `${minLabelPosition}%` }}>
+                {minPlayerCount || minAvailablePlayerCount}
+              </div>
+              <div className="max-player-count" style={{ left: `${maxLabelPosition}%` }}>
+                {maxPlayerCount || maxAvailablePlayerCount}
+              </div>
+              <div className="player-count-slider">
+                <Slider
+                  range
+                  min={minAvailablePlayerCount}
+                  max={maxAvailablePlayerCount}
+                  defaultValue={[minAvailablePlayerCount, maxAvailablePlayerCount]}
+                  onChange={(value) => {
+                    setMinPlayerCount(value[0]);
+                    setMaxPlayerCount(value[1]);
+                  }}
+                  allowCross={false}
+                />
+              </div>
             </div>
           </div>
         </div>
+      )}
         <ul>
           {filteredGames().map((game) => (
             <li key={game.id}>
