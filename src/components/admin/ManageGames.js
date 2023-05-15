@@ -28,7 +28,9 @@ const ManageGames = ({ authToken }) => {
       if (cachedData) {
         setGames(cachedData);
       } else {
-        const { data } = await axios.get(`${config.API_BASE_URL}/api/games`);
+        const { data } = await axios.get(`${config.API_BASE_URL}/api/games/all`, {
+          headers: { 'x-auth-token': authToken },
+        });
         const currentLanguageId = getLanguageIdByCode(i18n.language);
         const translatedGames = data.map((game) => {
           const translation = game.translations.find(
@@ -42,7 +44,7 @@ const ManageGames = ({ authToken }) => {
     } catch (err) {
       console.error(err);
     }
-  }, [getLanguageIdByCode, i18n.language]);
+  }, [getLanguageIdByCode, i18n.language, authToken]);
 
   const fetchCategories = useCallback(async () => {
     try {
