@@ -63,6 +63,12 @@
     }
   }
 
+  .new-indicator {
+    color: $light-purple;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+
   .filters {
     display: flex;
     flex-wrap: wrap;
