@@ -90,8 +90,17 @@
     "addNecessityButton": "Add Necessity",
     "cancelButton": "Cancel"
   },
+  "EditGameModal": {
+    "editGameButton": "Edit",
+    "updateGameButton": "Update Drinking Game",
+    "cancelButton": "Cancel"
+  },
+  "DeleteGameModal": {
+    "deleteGameTitle": "Delete Drinking Game"
+  },
   "ManageGames": {
     "title": "Manage Drinking Games",
-    "gamesTitle": "Drinking Games"
+    "gamesTitle": "Drinking Games",
+    "delete": "Delete"
   }
 }

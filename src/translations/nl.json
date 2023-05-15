@@ -90,8 +90,17 @@
     "addNecessityButton": "Benodigdheid Toevoegen",
     "cancelButton": "Annuleren"
   },
+  "EditGameModal": {
+    "editGameButton": "Bewerk",
+    "updateGameButton": "Update Drankspelletje",
+    "cancelButton": "Annuleren"
+  },
+  "DeleteGameModal": {
+    "deleteGameTitle": "Verwijder Drankspelletje"
+  },
   "ManageGames": {
     "title": "Beheer Drankspelletjes",
-    "gamesTitle": "Drankspelletjes"
+    "gamesTitle": "Drankspelletjes",
+    "delete": "Verwijder"
   }
 }
