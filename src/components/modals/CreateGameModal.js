@@ -29,6 +29,8 @@ const CreateGameModal = ({ onGameCreated, authToken, languages, categories }) =>
     player_count: 0,
     image: '',
     category_id: categories[0].id,
+    publish: true,
+    new: true,
   });
   const { t } = useTranslation();
 
@@ -142,12 +144,10 @@ const CreateGameModal = ({ onGameCreated, authToken, languages, categories }) =>
       // FormData object to send the image file
       const formData = new FormData();
       formData.append('image', uploadedImage);
-      Object.entries(gameToSave).forEach(([key, value]) => {
-        if (key === 'descriptions' || key === 'necessities' || key === 'translations' || key === 'aliases') {
-          value = JSON.stringify(value);
-        }
-        formData.append(key, value);
-      });
+
+      const jsonData = { ...gameToSave };
+      delete jsonData.image;
+      formData.append('data', JSON.stringify(jsonData));
 
       await axios.post(`${config.API_BASE_URL}/api/games`, formData, {
         headers: {
@@ -331,6 +331,28 @@ const CreateGameModal = ({ onGameCreated, authToken, languages, categories }) =>
             </div>
           ))}
           <button onClick={addNecessityInput}>{t('CreateGameModal.addNecessityButton')}</button>
+        </div>
+        {/* Publish */}
+        <div>
+          <label>{t('CreateGameModal.publish')}</label>
+          <input
+            type="checkbox"
+            checked={newGame.publish}
+            onChange={(e) =>
+              setNewGame({ ...newGame, publish: e.target.checked })
+            }
+          />
+        </div>
+        {/* New */}
+        <div>
+          <label>{t('CreateGameModal.new')}</label>
+          <input
+            type="checkbox"
+            checked={newGame.new}
+            onChange={(e) =>
+              setNewGame({ ...newGame, new: e.target.checked })
+            }
+          />
         </div>
         <button onClick={handleCreateGame}>{t('CreateGameModal.createGameButton')}</button>
         <button onClick={toggleModal}>{t('CreateGameModal.cancelButton')}</button>

@@ -88,7 +88,9 @@
     "necessities": "Benodigdheden",
     "removeNecessityButton": "Benodigdheid Verwijderen",
     "addNecessityButton": "Benodigdheid Toevoegen",
-    "cancelButton": "Annuleren"
+    "cancelButton": "Annuleren",
+    "publish": "Publiceer",
+    "new": "Markeer als Nieuw"
   },
   "EditGameModal": {
     "editGameButton": "Bewerk",
