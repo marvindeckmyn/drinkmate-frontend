@@ -12,29 +12,33 @@ const ManageCategories = ({ authToken }) => {
   const [categories, setCategories] = useState([]);
   const [languages, setLanguages] = useState([]);
   const { t, i18n } = useTranslation();
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
-  const getLanguageIdByCode = useCallback(
-    (code) => languages.find((lang) => lang.code === code)?.id,
-    [languages]
-  );
+  useEffect(() => {
+    const onLanguageChanged = (lng) => setCurrentLanguage(lng);
+    i18n.on('languageChanged', onLanguageChanged);
+    return () => {
+      i18n.off('languageChanged', onLanguageChanged);
+    };
+  }, [i18n]);
 
   const fetchCategories = useCallback(async () => {
     try {
       const { data } = await axios.get(`${config.API_BASE_URL}/api/categories`, {
         headers: { 'x-auth-token': authToken },
       });
-      const currentLanguageId = getLanguageIdByCode(i18n.language);
       const translatedCategories = data.map((category) => {
         const translation = category.translations.find(
-          (translation) => translation.language_id === currentLanguageId
+          (translation) => translation.code === i18n.language
         );
         return { ...category, name: translation ? translation.name : category.name };
       });
+      console.log(translatedCategories)
       setCategories(translatedCategories);
     } catch (err) {
       console.error(err);
     }
-  }, [authToken, getLanguageIdByCode, i18n.language]);
+  }, [authToken, i18n.language]);
 
   const fetchLanguages = useCallback(async () => {
     try {
@@ -53,7 +57,7 @@ const ManageCategories = ({ authToken }) => {
 
   useEffect(() => {
     fetchCategories();
-  }, [i18n.language, fetchCategories]);
+  }, [currentLanguage, fetchCategories]);
 
   const handleCategoryCreated = () => {
     fetchCategories();
