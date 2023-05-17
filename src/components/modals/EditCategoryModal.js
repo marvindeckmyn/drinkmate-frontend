@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
-const EditCategoryModal = ({ category, onUpdate, authToken, languages }) => {
+const EditCategoryModal = ({ category, onUpdate, languages }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [updatedCategory, setUpdatedCategory] = useState(category);
   const { t } = useTranslation();
@@ -40,7 +42,9 @@ const EditCategoryModal = ({ category, onUpdate, authToken, languages }) => {
 
   return (
     <>
-      <button onClick={toggleModal}>{t('ManageCategories.edit')}</button>
+      <button onClick={toggleModal}>
+        <FontAwesomeIcon icon={faEdit} />
+      </button>
       <Modal 
         isOpen={isModalOpen} 
         onRequestClose={toggleModal} 

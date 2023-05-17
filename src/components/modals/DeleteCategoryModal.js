@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const DeleteCategoryModal = ({ category, onDelete }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,7 +25,9 @@ const DeleteCategoryModal = ({ category, onDelete }) => {
 
   return (
     <>
-      <button onClick={toggleModal}>{t('ManageCategories.delete')}</button>
+      <button onClick={toggleModal}>
+        <FontAwesomeIcon icon={faTrash} />
+      </button>
       <Modal isOpen={isModalOpen} onRequestClose={toggleModal} contentLabel="Delete Category Modal">
         <h2>{t('DeleteCategoryModal.deleteCategoryTitle')}</h2>
         <p>{t('DeleteCategoryModal.deleteCategoryWarning')}</p>

@@ -110,7 +110,6 @@ const ManageCategories = ({ authToken }) => {
               <EditCategoryModal
                 category={category}
                 onUpdate={handleUpdateCategory}
-                authToken={authToken}
                 languages={languages}
               />
               <DeleteCategoryModal category={category} onDelete={handleDeleteCategory} />
