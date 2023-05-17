@@ -33,7 +33,6 @@ const ManageCategories = ({ authToken }) => {
         );
         return { ...category, name: translation ? translation.name : category.name };
       });
-      console.log(translatedCategories)
       setCategories(translatedCategories);
     } catch (err) {
       console.error(err);
