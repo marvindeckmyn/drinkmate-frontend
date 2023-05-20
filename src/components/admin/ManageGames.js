@@ -16,6 +16,7 @@ const ManageGames = ({ authToken }) => {
   const [categories, setCategories] = useState([]);
   const [languages, setLanguages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
   const { t, i18n } = useTranslation();
 
   const getLanguageIdByCode = useCallback(
@@ -25,6 +26,8 @@ const ManageGames = ({ authToken }) => {
 
   const fetchGames = useCallback(async () => {
     try {
+      setSearchTerm('');
+
       const cacheKey = 'games';
       const cachedData = getCache(cacheKey);
       if (cachedData) {
@@ -155,6 +158,12 @@ const ManageGames = ({ authToken }) => {
     }
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredGames = games.filter(game => game.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
   return (
     <div className="manage-games">
       <ToastContainer position={toast.POSITION.BOTTOM_CENTER} />
@@ -171,9 +180,17 @@ const ManageGames = ({ authToken }) => {
         )}
       </div>
       {/* Render list of games for updating and deleting */}
-      <h2>{t('ManageGames.gamesTitle')}</h2>
+      <h2>{t('ManageGames.gamesTitle')} ({filteredGames.length})</h2>
+      <div>
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+      </div>
       <ul>
-        {games.map((game) => {
+        {filteredGames.map((game) => {
           return (
             <li key={game.id}>
               {game.name}
