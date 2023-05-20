@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setCache, getCache } from '../../apiCache';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash, faStar, faStarOfLife } from '@fortawesome/free-solid-svg-icons';
 
 const ManageGames = ({ authToken }) => {
   const [games, setGames] = useState([]);
@@ -113,6 +115,32 @@ const ManageGames = ({ authToken }) => {
     toast.success('Game updated successfully!');
   }
 
+  const handleToggleNew = async (gameId, currentState) => {
+    try {
+      await axios.put(`${config.API_BASE_URL}/api/games/${gameId}/new`, { newValue: !currentState }, {
+        headers: { 'x-auth-token': authToken },
+      });
+      setGames(games.map(game => game.id === gameId ? { ...game, new: !currentState } : game));
+      toast.success('Game new status toggled successfully!');
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to toggle the game new status!');
+    }
+  };
+
+  const handleTogglePublish = async (gameId, currentState) => {
+    try {
+      await axios.put(`${config.API_BASE_URL}/api/games/${gameId}/publish`, { publishValue: !currentState}, {
+        headers: { 'x-auth-token': authToken},
+      });
+      setGames(games.map(game => game.id === gameId ? { ...game, publish: !currentState } : game));
+      toast.success('Game publish status toggled successfully!');
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to toggle the game publish status!');
+    }
+  };
+
   const handleDeleteGame = async (gameId) => {
     try {
       await axios.delete(`${config.API_BASE_URL}/api/games/${gameId}`, {
@@ -159,6 +187,14 @@ const ManageGames = ({ authToken }) => {
                     categories={categories}
                   />
                 )}
+
+                <button onClick={() => handleToggleNew(game.id, game.new)}>
+                  <FontAwesomeIcon icon={game.new ? faStarOfLife : faStar} />
+                </button>
+                <button onClick={() => handleTogglePublish(game.id, game.publish)}>
+                  <FontAwesomeIcon icon={game.publish ? faEye : faEyeSlash} />
+                </button>
+                
                 {!loading && (
                 <DeleteGameModal game={game} onDelete={handleDeleteGame} />
                 )}
