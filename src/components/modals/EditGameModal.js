@@ -8,6 +8,8 @@ import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { stateFromHTML } from 'draft-js-import-html';
 import { convertToHTML } from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -235,7 +237,9 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
 
   return (
     <>
-      <button onClick={toggleModal}>{t('EditGameModal.editGameButton')}</button>
+      <button onClick={toggleModal}>
+        <FontAwesomeIcon icon={faEdit} />
+      </button>
       <Modal isOpen={isModalOpen} onRequestClose={toggleModal} contentLabel="Edit Game Modal">
       <label>{t('CreateGameModal.language')}</label>
       <select

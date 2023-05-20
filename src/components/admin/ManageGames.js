@@ -128,11 +128,11 @@ const ManageGames = ({ authToken }) => {
   };
 
   return (
-    <div>
+    <div className="manage-games">
       <ToastContainer position={toast.POSITION.BOTTOM_CENTER} />
       <h1>{t('ManageGames.title')}</h1>
       {/* Render form for creating a game */}
-      <div>
+      <div className="create-game-modal">
         {!loading && languages.length > 0 && (
           <CreateGameModal
           onGameCreated={handleGameCreated}
@@ -149,18 +149,20 @@ const ManageGames = ({ authToken }) => {
           return (
             <li key={game.id}>
               {game.name}
-              {!loading && (
-                <EditGameModal
-                  game={game}
-                  onUpdate={handleUpdateGame}
-                  authToken={authToken}
-                  languages={languages}
-                  categories={categories}
-                />
-              )}
-              {!loading && (
-              <DeleteGameModal game={game} onDelete={handleDeleteGame} />
-              )}
+              <div className="edit-delete-buttons">
+                {!loading && (
+                  <EditGameModal
+                    game={game}
+                    onUpdate={handleUpdateGame}
+                    authToken={authToken}
+                    languages={languages}
+                    categories={categories}
+                  />
+                )}
+                {!loading && (
+                <DeleteGameModal game={game} onDelete={handleDeleteGame} />
+                )}
+              </div>
             </li>
           );
         })}

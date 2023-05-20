@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const DeleteGameModal = ({ game, onDelete }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,7 +25,9 @@ const DeleteGameModal = ({ game, onDelete }) => {
 
   return (
     <>
-      <button onClick={toggleModal}>{t('ManageGames.delete')}</button>
+      <button onClick={toggleModal}>
+        <FontAwesomeIcon icon={faTrash} />
+      </button>
       <Modal isOpen={isModalOpen} onRequestClose={toggleModal} contentLabel="Delete Game Modal">
         <h2>{t('DeleteGameModal.deleteGameTitle')}</h2>
         <p>{t('DeleteGameModal.deleteGameWarning')}</p>
