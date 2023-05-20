@@ -51,7 +51,7 @@ const GameList = () => {
   const filteredGames = useCallback(() => {
     const lowerCaseSearch = search.toLowerCase();
 
-    return games.filter((game) => {
+    let filtered = games.filter((game) => {
       const translatedName = getTranslatedName(game.translations, game.name).toLowerCase();
       const gameAlias = game.alias ? game.alias.toLowerCase() : '';
       const categoryMatches = selectedCategories.size === 0 || selectedCategories.has(game.category_id);
@@ -63,6 +63,24 @@ const GameList = () => {
         playerCountMatches
       );
     });
+
+    const newGames = filtered.filter(game => game.new);
+    const otherGames = filtered.filter(game => !game.new);
+
+    function shuffle(array) {
+      let currentIndex = array.length, temporaryValue, randomIndex;
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
+    }
+
+    return newGames.concat(shuffle(otherGames));
+    
   }, [search, games, getTranslatedName, selectedCategories, minPlayerCount, maxPlayerCount]);
   
 
