@@ -219,7 +219,11 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
 
       // FormData object to send the image file
       const formData = new FormData();
-      formData.append('image', uploadedImage);
+
+      if (uploadedImage) {
+        formData.append('image', uploadedImage);
+      }
+      
       formData.append('game_data', JSON.stringify(gameToSave)); 
 
       await axios.put(`${config.API_BASE_URL}/api/games/${game.id}`, formData, {
@@ -344,18 +348,6 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
             </div>
           )}
         </div>
-        {/* Description */}
-        <div>
-          <label>{t('CreateGameModal.description')}</label>
-          <Editor
-            editorState={editorState}
-            onEditorStateChange={handleEditorStateChange}
-            toolbar={{
-              options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
-              // Customize the toolbar options as needed
-            }}
-          />
-        </div>
         {/* Necessities */}
         <div>
           <label>{t('CreateGameModal.necessities')}</label>
@@ -383,6 +375,18 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
             </div>
           ))}
           <button onClick={addNecessityInput}>{t('CreateGameModal.addNecessityButton')}</button>
+        </div>
+        {/* Description */}
+        <div>
+          <label>{t('CreateGameModal.description')}</label>
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={handleEditorStateChange}
+            toolbar={{
+              options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
+              // Customize the toolbar options as needed
+            }}
+          />
         </div>
         <button onClick={handleUpdateGame}>{t('EditGameModal.updateGameButton')}</button>
         <button onClick={toggleModal}>{t('EditGameModal.cancelButton')}</button>

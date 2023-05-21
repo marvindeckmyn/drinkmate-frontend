@@ -280,18 +280,6 @@ const CreateGameModal = ({ onGameCreated, authToken, languages, categories }) =>
             </div>
           )}
         </div>
-        {/* Description */}
-        <div>
-          <label>{t('CreateGameModal.description')}</label>
-          <Editor
-            editorState={editorState}
-            onEditorStateChange={handleEditorStateChange}
-            toolbar={{
-              options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
-              // Customize the toolbar options as needed
-            }}
-          />
-        </div>
         {/* Necessities */}
         <div>
           <label>{t('CreateGameModal.necessities')}</label>
@@ -331,6 +319,18 @@ const CreateGameModal = ({ onGameCreated, authToken, languages, categories }) =>
             </div>
           ))}
           <button onClick={addNecessityInput}>{t('CreateGameModal.addNecessityButton')}</button>
+        </div>
+        {/* Description */}
+        <div>
+          <label>{t('CreateGameModal.description')}</label>
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={handleEditorStateChange}
+            toolbar={{
+              options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
+              // Customize the toolbar options as needed
+            }}
+          />
         </div>
         {/* Publish */}
         <div>
