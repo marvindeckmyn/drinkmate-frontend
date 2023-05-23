@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { stateFromHTML } from 'draft-js-import-html';
-import { convertToHTML } from 'draftjs-to-html';
+import { stateToHTML } from 'draft-js-export-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -203,14 +203,13 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
         });
       });
       
-
       // Convert descriptions to HTML
       gameToSave.descriptions = gameToSave.descriptions.map((descriptionObj) => {
         let htmlDescription;
         try {
           const rawContent = JSON.parse(descriptionObj.description);
           const contentState = convertFromRaw(rawContent);
-          htmlDescription = convertToHTML(contentState);
+          htmlDescription = stateToHTML(contentState);
         } catch (err) {
           htmlDescription = descriptionObj.description;
         }
