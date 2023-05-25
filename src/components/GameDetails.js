@@ -36,6 +36,15 @@ const GameDetails = () => {
     return <div>{t('GameDetails.loading')}...</div>;
   }
 
+  const getTranslatedAlias = (aliases, defaultValue) => {
+    if (aliases && aliases.length > 0) {
+      const languageCode = i18n.language;
+      const alias = aliases.find((a) => a.code === languageCode);
+      return alias ? alias.alias : defaultValue;
+    }
+    return defaultValue;
+  }
+
   const getTranslatedDescription = (descriptions, defaultValue) => {
     if (descriptions && descriptions.length > 0) {
       const languageCode = i18n.language;
@@ -65,7 +74,7 @@ const GameDetails = () => {
         </div>
         {game.alias && (
           <p className="alias">
-            {t('GameDetails.alias')}: {game.alias}
+            {t('GameDetails.alias')}: {getTranslatedAlias(game.aliases, game.alias)}
           </p>
         )}
         <div className="content-container">
