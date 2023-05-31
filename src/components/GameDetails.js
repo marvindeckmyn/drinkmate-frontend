@@ -59,7 +59,7 @@ const GameDetails = () => {
     const translation = necessity.necessity_translation.find(
       (t) => t.code === languageCode
     );
-    return translation ? translation.name : necessity.necessity_name;
+    return translation ? translation.name : null;
   };
 
   return (
@@ -81,17 +81,16 @@ const GameDetails = () => {
           <h2>{t('GameDetails.description')}</h2>
           <p>{parse(getTranslatedDescription(game.descriptions, game.description))}</p>
           {game.necessities && game.necessities.length > 0 && (
-          <>
-            <h2>{t('GameDetails.necessities')}</h2>
-            <ul className="necessities-list">
-              {game.necessities.map((necessity) => (
-                <li key={necessity.necessity_id}>
-                  {getTranslatedNecessityName(necessity)}
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
+            <>
+              <h2>{t('GameDetails.necessities')}</h2>
+              <ul className="necessities-list">
+                {game.necessities.map((necessity) => {
+                  const translatedName = getTranslatedNecessityName(necessity);
+                  return translatedName ? <li key={necessity.necessity_id}>{translatedName}</li> : null
+                })}
+              </ul>
+            </>
+          )}
           <h2>{t('GameDetails.details')}</h2>
           <p>
             {t('GameDetails.minPlayers')}: {game.player_count}
