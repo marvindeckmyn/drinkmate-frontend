@@ -4,8 +4,11 @@ import config from '../config';
 import { useTranslation } from 'react-i18next';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { setCache, getCache } from '../apiCache';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SubmitGame = ({ authToken }) => {
   const isLoggedIn = !!localStorage.getItem('authToken');
@@ -50,8 +53,7 @@ const SubmitGame = ({ authToken }) => {
 
   const handleEditorStateChange = (newEditorState) => {
     const contentState = newEditorState.getCurrentContent();
-    const rawContent = convertToRaw(contentState);
-    const description = JSON.stringify(rawContent);
+    const description = stateToHTML(contentState);
   
     setNewGame({
       ...newGame,
@@ -70,11 +72,14 @@ const SubmitGame = ({ authToken }) => {
       await axios.post(`${config.API_BASE_URL}/api/submitted/games`, newGame, {
         headers: {
           'x-auth-token': authToken,
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
+
+      toast.success('Game submitted successfully!');
     } catch (err) {
       console.error(err);
+      toast.error('Failed to submit the game!')
     }
   };
 
@@ -93,6 +98,7 @@ const SubmitGame = ({ authToken }) => {
   return (
     <div className="main">
       <div className="submit-game">
+      <ToastContainer position={toast.POSITION.BOTTOM_CENTER} />
         <h1>Submit a Game</h1>
         <form onSubmit={handleSubmit}>
           <input type="text" name="name" placeholder="Game Name" onChange={handleChange} value={newGame.name} required />

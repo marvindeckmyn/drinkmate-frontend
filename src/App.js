@@ -80,7 +80,7 @@ function App({ router: Router = BrowserRouter}) {
             <Route path="/" element={<GameList />} />
             <Route path="/games" element={<GameList />} />
             <Route path="/games/:id" element={<GameDetails />} />
-            <Route path="/submit-game" element={<SubmitGame authToken={authToken} />} />
+            <Route path="/submit-game" element={<SubmitGame />} />
             <Route path="/login" element={<Login setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
             <Route path="/register" element={<Register setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
           </Routes>
@@ -106,7 +106,7 @@ function App({ router: Router = BrowserRouter}) {
                 <Route path="submitted-games" element={<ManageUserSubmittedGames />} />
               </Route>
             )}
-            <Route path="/submit-game" element={<SubmitGame />} />
+            <Route path="/submit-game" element={<SubmitGame authToken={authToken} />} />
           </Routes>
         </div>
       </Router>
