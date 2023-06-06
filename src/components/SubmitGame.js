@@ -3,7 +3,7 @@ import axios from 'axios';
 import config from '../config';
 import { useTranslation } from 'react-i18next';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { setCache, getCache } from '../apiCache';
@@ -22,7 +22,7 @@ const SubmitGame = ({ authToken }) => {
     description: '',
     alias: '',
     necessities: '',
-    category_id: '',
+    category_id: 1,
   });
   const { t, i18n } = useTranslation();
 
