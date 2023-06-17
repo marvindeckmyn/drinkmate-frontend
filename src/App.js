@@ -103,7 +103,7 @@ function App({ router: Router = BrowserRouter}) {
                 <Route path="general" element={<AdminGeneral authToken={authToken} currentUserId={currentUserId} />} />
                 <Route path="categories" element={<ManageCategories authToken={authToken} />} />
                 <Route path="games" element={<ManageGames authToken={authToken} />} />
-                <Route path="submitted-games" element={<ManageUserSubmittedGames />} />
+                <Route path="submitted-games" element={<ManageUserSubmittedGames authToken={authToken} />} />
               </Route>
             )}
             <Route path="/submit-game" element={<SubmitGame authToken={authToken} />} />
