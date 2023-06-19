@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../config';
 
@@ -20,24 +21,6 @@ const ManageUserSubmittedGames = ({ authToken }) => {
     fetchUserSubmittedGames();
   }, [fetchUserSubmittedGames]);
 
-  const approveGame = async (game) => {
-    try {
-      await axios.post(`${config.API_BASE_URL}/api/user-submitted-games/${game.id}/approve`, game);
-      fetchUserSubmittedGames();
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const rejectGame = async (gameId) => {
-    try {
-      await axios.delete(`${config.API_BASE_URL}/api/user-submitted-games/${gameId}/reject`);
-      fetchUserSubmittedGames();
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return (
     <div>
       <h1>Manage User Submitted Games</h1>
@@ -45,7 +28,7 @@ const ManageUserSubmittedGames = ({ authToken }) => {
       <ul>
         {userSubmittedGames.map((game) => (
           <li key={game.id}>
-            {game.name} by {game.creator}
+            <Link to={`/admin/submitted-games/${game.id}`}>{game.name} by {game.creator}</Link>
           </li>
         ))}
       </ul>

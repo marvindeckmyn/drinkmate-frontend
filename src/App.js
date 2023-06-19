@@ -11,6 +11,7 @@ import Sidebar from './components/Sidebar';
 import ManageCategories from './components/admin/ManageCategories';
 import ManageGames from './components/admin/ManageGames';
 import ManageUserSubmittedGames from './components/admin/ManageUserSubmittedGames';
+import SubmittedGameDetail from './components/admin/SubmittedGameDetail';
 import AdminGeneral from './components/admin/AdminGeneral';
 import GameDetails from './components/GameDetails';
 import Header from './components/Header';
@@ -104,6 +105,7 @@ function App({ router: Router = BrowserRouter}) {
                 <Route path="categories" element={<ManageCategories authToken={authToken} />} />
                 <Route path="games" element={<ManageGames authToken={authToken} />} />
                 <Route path="submitted-games" element={<ManageUserSubmittedGames authToken={authToken} />} />
+                <Route path="submitted-games/:id" element={<SubmittedGameDetail authToken={authToken} />} />
               </Route>
             )}
             <Route path="/submit-game" element={<SubmitGame authToken={authToken} />} />
