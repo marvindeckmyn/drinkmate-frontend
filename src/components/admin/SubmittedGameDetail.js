@@ -23,6 +23,26 @@ const SubmittedGameDetail = ({ authToken }) => {
     fetchGameDetails();
   }, [id, authToken]);
 
+  const approveGame = async () => {
+    try {
+      await axios.put(`${config.API_BASE_URL}/api/submitted/games/${id}/approve`, {}, {
+        headers: { 'x-auth-token': authToken },
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const rejectGame = async () => {
+    try {
+      await axios.delete(`${config.API_BASE_URL}/api/submitted/games/${id}/reject`, {
+        headers: { 'x-auth-token': authToken },
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   if (!gameDetail) {
     return <div>Penis...</div>;
   }
@@ -50,6 +70,9 @@ const SubmittedGameDetail = ({ authToken }) => {
       <p>
         Creator: {gameDetail.creator}
       </p>
+      
+      <button onClick={approveGame}>Approve</button>
+      <button onClick={rejectGame}>Reject</button>
     </div>
   );
 };
