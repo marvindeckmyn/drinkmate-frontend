@@ -3,6 +3,8 @@ import axios from 'axios';
 import config from '../config';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = ({ setAuthToken, handleLogin }) => {
   const [formData, setFormData] = useState({ identifier: '', password: '' });
@@ -20,17 +22,20 @@ const Login = ({ setAuthToken, handleLogin }) => {
       if (response.data.token) {
         setAuthToken(response.data.token);
         handleLogin(response.data.userId, response.data.isAdmin);
+        toast.success('Login successful!');
         navigate('/');
       } else {
-        console.error('Login error: Token not received.');
+        toast.error('Failed to log in.')
       }
     } catch (err) {
       console.error(err);
+      toast.error('Credentials are not correct.')
     }
   };
 
   return (
     <div className="main">
+      <ToastContainer position={toast.POSITION.BOTTOM_CENTER} />
       <div className="login">
         <h1>{t('Login.title')}</h1>
         <form onSubmit={handleSubmit}>

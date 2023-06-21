@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import config from '../config';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = ({ setAuthToken, handleLogin }) => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '', confirmPassword: '' });
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,16 +26,21 @@ const Register = ({ setAuthToken, handleLogin }) => {
       if (response.data.token) {
         setAuthToken(response.data.token);
         handleLogin(response.data.userId, response.data.isAdmin);
+        toast.success('Register successful!');
+        navigate('/');
       } else {
         console.error('Registration error: Token not received.');
+        toast.error('Failed to register.')
       }
     } catch (err) {
       console.error(err);
+      toast.error(err.response.data.msg);
     }
   };
 
   return (
     <div className="main">
+      <ToastContainer position={toast.POSITION.BOTTOM_CENTER} />
       <div className="register">
         <h1>{t('Register.title')}</h1>
         <form onSubmit={handleSubmit}>
