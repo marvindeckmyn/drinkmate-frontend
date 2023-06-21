@@ -25,7 +25,9 @@
     "admin": "Admin",
     "notAdmin": "Geen Admin",
     "grantAdmin": "Geef Admin",
-    "revokeAdmin": "Trek Admin in"
+    "revokeAdmin": "Trek Admin in",
+    "manageAdmins": "Admins",
+    "manageRecentUsers": "Nieuwe Gebruikers"
   },
   "Sidebar": {
     "games": "Drankspelletjes",

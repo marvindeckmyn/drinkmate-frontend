@@ -25,7 +25,9 @@
     "admin": "Admin",
     "notAdmin": "Not Admin",
     "grantAdmin": "Grant Admin",
-    "revokeAdmin": "Revoke Admin"
+    "revokeAdmin": "Revoke Admin",
+    "manageAdmins": "Admins",
+    "manageRecentUsers": "Recent Users"
   },
   "Sidebar": {
     "games": "Drinking Games",
