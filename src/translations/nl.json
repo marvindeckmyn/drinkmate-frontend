@@ -106,5 +106,11 @@
     "title": "Drankspelletjes beheren",
     "gamesTitle": "Drankspelletjes",
     "delete": "Verwijder"
+  },
+  "DiceRoller": {
+    "title": "Dobbelstenen",
+    "description": "Geen dobbelstenen bij de hand? Dan kan je hier gebruik van maken!",
+    "roll": "Gooi",
+    "youRolled": "Je gooide"
   }
 }

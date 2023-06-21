@@ -15,6 +15,7 @@ import SubmittedGameDetail from './components/admin/SubmittedGameDetail';
 import AdminGeneral from './components/admin/AdminGeneral';
 import GameDetails from './components/GameDetails';
 import Header from './components/Header';
+import DiceRoller from './components/DiceRoller';
 import './scss/main.scss';
 
 function App({ router: Router = BrowserRouter}) {
@@ -82,6 +83,7 @@ function App({ router: Router = BrowserRouter}) {
             <Route path="/games" element={<GameList />} />
             <Route path="/games/:id" element={<GameDetails />} />
             <Route path="/submit-game" element={<SubmitGame />} />
+            <Route path="/dice" element={<DiceRoller />} />
             <Route path="/login" element={<Login setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
             <Route path="/register" element={<Register setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
           </Routes>
@@ -109,6 +111,7 @@ function App({ router: Router = BrowserRouter}) {
               </Route>
             )}
             <Route path="/submit-game" element={<SubmitGame authToken={authToken} />} />
+            <Route path="/dice" element={<DiceRoller />} />
           </Routes>
         </div>
       </Router>

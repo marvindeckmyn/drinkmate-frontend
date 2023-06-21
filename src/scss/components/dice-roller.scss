@@ -1,0 +1,116 @@
+@import '../variables';
+
+.diceroller {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: $dark-purple;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .dice-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+      border: none;
+      background-color: $dark-purple;
+      color: $white;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $light-purple;
+      }
+    }
+  }
+
+  .dice-display {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border: none;
+    background-color: $dark-purple;
+    color: $white;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-purple;
+    }
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: $dark-purple;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    .dice-buttons {
+      gap: 0.5rem;
+
+      button {
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+    }
+
+    .dice-display {
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+    }
+  }
+}

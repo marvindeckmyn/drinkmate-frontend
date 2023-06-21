@@ -106,5 +106,11 @@
     "title": "Manage Drinking Games",
     "gamesTitle": "Drinking Games",
     "delete": "Delete"
+  },
+  "DiceRoller": {
+    "title": "Dice Roller",
+    "description": "No dice on hand? Then you can make use of this!",
+    "roll": "Roll",
+    "youRolled": "You rolled"
   }
 }
