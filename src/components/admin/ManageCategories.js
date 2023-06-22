@@ -60,7 +60,7 @@ const ManageCategories = ({ authToken }) => {
 
   const handleCategoryCreated = () => {
     fetchCategories();
-    toast.success('Category created successfully!');
+    toast.success(t('ManageCategories.creationSuccess'));
   };
 
   const handleUpdateCategory = async (category) => {
@@ -69,10 +69,10 @@ const ManageCategories = ({ authToken }) => {
         headers: { 'x-auth-token': authToken },
       });
       fetchCategories();
-      toast.success('Category updated successfully!');
+      toast.success(t('ManageCategories.updateSuccess'));
     } catch (err) {
       console.error(err);
-      toast.error('Failed to update the category!');
+      toast.error(t('ManageCategories.updateFail'));
     }
   };
 
@@ -82,10 +82,10 @@ const ManageCategories = ({ authToken }) => {
         headers: { 'x-auth-token': authToken },
       });
       fetchCategories();
-      toast.success('Category deleted successfully!');
+      toast.success(t('ManageCategories.deleteSuccess'));
     } catch (err) {
       console.error(err);
-      toast.error('Failed to delete the category!');
+      toast.error(t('ManageCategories.deleteFail'));
     }
   };
 

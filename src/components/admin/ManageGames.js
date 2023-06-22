@@ -109,13 +109,13 @@ const ManageGames = ({ authToken }) => {
   const handleGameCreated = () => {
     setCache('games', null);
     fetchGames();
-    toast.success('Game created successfully!');
+    toast.success(t('ManageGames.creationSuccess'));
   }
 
   const handleUpdateGame = () => {
     setCache('games', null);
     fetchGames();
-    toast.success('Game updated successfully!');
+    toast.success(t('ManageGames.updateSuccess'));
   }
 
   const handleToggleNew = async (gameId, currentState) => {
@@ -124,10 +124,10 @@ const ManageGames = ({ authToken }) => {
         headers: { 'x-auth-token': authToken },
       });
       setGames(games.map(game => game.id === gameId ? { ...game, new: !currentState } : game));
-      toast.success('Game new status toggled successfully!');
+      toast.success(t('ManageGames.toggleStatusSuccess'));
     } catch (err) {
       console.error(err);
-      toast.error('Failed to toggle the game new status!');
+      toast.error(t('ManageGames.toggleStatusFail'));
     }
   };
 
@@ -137,10 +137,10 @@ const ManageGames = ({ authToken }) => {
         headers: { 'x-auth-token': authToken},
       });
       setGames(games.map(game => game.id === gameId ? { ...game, publish: !currentState } : game));
-      toast.success('Game publish status toggled successfully!');
+      toast.success(t('ManageGames.togglePublishSuccess'));
     } catch (err) {
       console.error(err);
-      toast.error('Failed to toggle the game publish status!');
+      toast.error(t('ManageGames.togglePublishFail'));
     }
   };
 
@@ -151,10 +151,10 @@ const ManageGames = ({ authToken }) => {
       });
       setCache('games', null);
       fetchGames();
-      toast.success('Game deleted successfully!');
+      toast.success('ManageGames.deleteSuccess');
     } catch (err) {
       console.error(err);
-      toast.error('Failed to delete the game!')
+      toast.error('ManageGames.deleteFail')
     }
   };
 
@@ -184,7 +184,7 @@ const ManageGames = ({ authToken }) => {
       <div>
         <input
           type="text"
-          placeholder="Search"
+          placeholder={t('ManageGames.search')}
           value={searchTerm}
           onChange={handleSearchChange}
         />

@@ -29,7 +29,7 @@ const Login = ({ setAuthToken, handleLogin }) => {
       }
     } catch (err) {
       console.error(err);
-      toast.error('Credentials are not correct.')
+      toast.error(t('Login.credentialsAreNotCorrect'))
     }
   };
 

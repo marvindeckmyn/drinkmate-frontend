@@ -27,7 +27,8 @@
     "grantAdmin": "Grant Admin",
     "revokeAdmin": "Revoke Admin",
     "manageAdmins": "Admins",
-    "manageRecentUsers": "Recent Users"
+    "manageRecentUsers": "Recent Users",
+    "searchUsers": "Search users..."
   },
   "Sidebar": {
     "games": "Drinking Games",
@@ -49,7 +50,8 @@
     "passwordPlaceholder": "Password",
     "loginButton": "Login",
     "dontHaveAccount": "You don't have an account yet?",
-    "registerLink": "Register here."
+    "registerLink": "Register here.",
+    "credentialsAreNotCorrect": "Credentials are not correct."
   },
   "Register": {
     "title": "Register",
@@ -66,7 +68,12 @@
     "createCategory": "Create Category",
     "categories": "Categories",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "creationSuccess": "Category created successfully!",
+    "updateSuccess": "Category updated successfully!",
+    "updateFail": "Failed to update the category!",
+    "deleteSuccess": "Category deleted successfully!",
+    "deleteFail": "Failed to delete the category!"
   },
   "CreateCategoryModal": {
     "createCategoryTitle": "Create Category",
@@ -105,7 +112,30 @@
   "ManageGames": {
     "title": "Manage Drinking Games",
     "gamesTitle": "Drinking Games",
-    "delete": "Delete"
+    "delete": "Delete",
+    "creationSuccess": "Game created successfully!",
+    "updateSuccess": "Game updated successfully!",
+    "toggleStatusSuccess": "Game 'new' status toggled successfully!",
+    "toggleStatusFail": "Failed to toggle the game 'new 'status!",
+    "togglePublishSuccess": "Game 'publish' status toggled successfully!",
+    "togglePublishFail": "Failed to toggle the game 'publish' status!",
+    "deleteSuccess": "Game deleted successfully!",
+    "deleteFail": "Failed to delete the game!",
+    "search": "Search"
+  },
+  "ManageUserSubmittedGames": {
+    "title": "Manage User Submitted Games",
+    "submittedGamesTitle": "Submitted Games"
+  },
+  "SubmittedGame": {
+    "description": "Description",
+    "necessities": "Necessities",
+    "details": "Details",
+    "minimumPlayers": "Minimum players",
+    "category": "Category",
+    "creator": "Creator",
+    "approve": "Approve",
+    "Registreren": "Reject"
   },
   "DiceRoller": {
     "title": "Dice Roller",

@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import config from '../../config';
 import parse from 'html-react-parser';
+import { useTranslation } from 'react-i18next';
 
 const SubmittedGameDetail = ({ authToken }) => {
   const { id } = useParams();
   const [gameDetail, setGameDetail] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchGameDetails = async () => {
@@ -54,25 +56,25 @@ const SubmittedGameDetail = ({ authToken }) => {
         <p>{gameDetail.alias}</p>
       )}
       
-      <h2>Description</h2>
+      <h2>{t('SubmittedGame.description')}</h2>
       <p>{parse(gameDetail.description)}</p>
 
-      <h2>Necessities</h2>
+      <h2>{t('SubmittedGame.necessities')}</h2>
       <p>{gameDetail.necessities}</p>
 
-      <h2>Details</h2>
+      <h2>{t('SubmittedGame.details')}</h2>
       <p>
-        Minimum players: {gameDetail.player_count}
+        {t('SubmittedGame.minimumPlayers')}: {gameDetail.player_count}
       </p>
       <p>
-        Category: {gameDetail.category}
+        {t('SubmittedGame.category')}: {gameDetail.category}
       </p>
       <p>
-        Creator: {gameDetail.creator}
+        {t('SubmittedGame.creator')}: {gameDetail.creator}
       </p>
       
-      <button onClick={approveGame}>Approve</button>
-      <button onClick={rejectGame}>Reject</button>
+      <button onClick={approveGame}>{t('SubmittedGame.approve')}</button>
+      <button onClick={rejectGame}>{t('SubmittedGame.reject')}</button>
     </div>
   );
 };

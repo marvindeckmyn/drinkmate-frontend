@@ -67,7 +67,7 @@ const AdminGeneral = ({ authToken, currentUserId }) => {
       <h2>{t('AdminGeneral.manageUserAdminPrivileges')}</h2>
       <input
         type="text"
-        placeholder="Search users..."
+        placeholder={t('AdminGeneral.searchUsers')}
         value={search}
         onChange={handleSearchChange}
       />

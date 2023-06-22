@@ -27,7 +27,8 @@
     "grantAdmin": "Geef Admin",
     "revokeAdmin": "Trek Admin in",
     "manageAdmins": "Admins",
-    "manageRecentUsers": "Nieuwe Gebruikers"
+    "manageRecentUsers": "Nieuwe Gebruikers",
+    "searchUsers": "Zoek gebruikers..."
   },
   "Sidebar": {
     "games": "Drankspelletjes",
@@ -49,7 +50,8 @@
     "passwordPlaceholder": "Wachtwoord",
     "loginButton": "Inloggen",
     "dontHaveAccount": "Heb je nog geen account?",
-    "registerLink": "Registreer hier."
+    "registerLink": "Registreer hier.",
+    "credentialsAreNotCorrect": "Login niet correct."
   },
   "Register": {
     "title": "Registreren",
@@ -66,7 +68,12 @@
     "createCategory": "Categorie aanmaken",
     "categories": "Categorieën",
     "edit": "Bewerk",
-    "delete": "Verwijder"
+    "delete": "Verwijder",
+    "creationSuccess": "Categorie succesvol aangemaakt!",
+    "updateSuccess": "Categorie succesvol bijgewerkt!",
+    "updateFail": "Categorie is niet bijgewerkt!",
+    "deleteSuccess": "Categorie succesvol verwijderd!",
+    "deleteFail": "De categorie is niet verwijderd!"
   },
   "CreateCategoryModal": {
     "createCategoryTitle": "Categorie aanmaken",
@@ -105,7 +112,30 @@
   "ManageGames": {
     "title": "Drankspelletjes beheren",
     "gamesTitle": "Drankspelletjes",
-    "delete": "Verwijder"
+    "delete": "Verwijder",
+    "creationSuccess": "Spel succesvol aangemaakt!",
+    "updateSuccess": "Spel succesvol bijgewerkt!",
+    "toggleStatusSuccess": "Status 'nieuw' succesvol omgeschakeld!",
+    "toggleStatusFail": "Het is niet gelukt om de 'nieuwe' status van het spel aan te passen!",
+    "togglePublishSuccess": "Status van spel 'publiceren' succesvol omgeschakeld!",
+    "togglePublishFail": "Het is niet gelukt om het spel de status 'publiceren' te geven!",
+    "deleteSuccess": "Spel succesvol verwijderd!",
+    "deleteFail": "Het is niet gelukt om het spel te verwijderen!",
+    "search": "Zoek"
+  },
+  "ManageUserSubmittedGames": {
+    "title": "Ingezonden spellen beheren",
+    "submittedGamesTitle": "Ingezonden Spellen"
+  },
+  "SubmittedGame": {
+    "description": "Beschrijving",
+    "necessities": "Benodigdheden",
+    "details": "Details",
+    "minimumPlayers": "Minimum spelers",
+    "category": "Categorie",
+    "creator": "Maker",
+    "approve": "Goedkeuren",
+    "Registreren": "Weigeren"
   },
   "DiceRoller": {
     "title": "Dobbelstenen",
