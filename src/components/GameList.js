@@ -195,7 +195,7 @@ const GameList = () => {
                 <Link to={`/games/${game.id}`}>
                   <div className="img-wrapper">
                     <img
-                      src={`${config.API_BASE_URL}/games/${game.image}`}
+                      src={`${config.API_BASE_URL}/${game.image}`}
                       alt={game.name} />
                   </div>
                   <div className="game-info">

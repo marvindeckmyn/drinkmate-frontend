@@ -69,7 +69,7 @@ const GameDetails = () => {
       <meta name="description" content={getTranslatedDescription(game.descriptions, game.description)} />
       <meta property="og:title" content={getTranslatedName(game.translations, game.name)} />
       <meta property="og:description" content={parse(getTranslatedDescription(game.descriptions, game.description))} />
-      <meta property="og:image" content={`${config.API_BASE_URL}/games/${game.image}`} />
+      <meta property="og:image" content={`${config.API_BASE_URL}/${game.image}`} />
       <meta property="og:url" content={window.location.href} />
       <link rel="canonical" href={window.location.href} />
       <html lang={i18n.language} />
@@ -78,7 +78,7 @@ const GameDetails = () => {
           <h1>{getTranslatedName(game.translations, game.name)}</h1>
           <div className="img-wrapper">
             <img
-              src={`${config.API_BASE_URL}/games/${game.image}`}
+              src={`${config.API_BASE_URL}/${game.image}`}
               alt={game.name} />
           </div>
           {game.alias && (

@@ -79,7 +79,7 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
     updateNecessityInputValues(necessitiesToDisplay);
   
       if (game.image) {
-        setImagePreviewUrl(`${config.API_BASE_URL}/games/${game.image}`);
+        setImagePreviewUrl(`${config.API_BASE_URL}/${game.image}`);
       }
   
       const descriptionObj = game.descriptions?.find(
