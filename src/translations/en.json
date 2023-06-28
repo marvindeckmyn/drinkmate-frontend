@@ -4,7 +4,8 @@
     "minPlayers": "players",
     "minCountPlayers": "Minimum players",
     "searchPlaceholder": "Search for drinking games...",
-    "categories": "Categories"
+    "categories": "Categories",
+    "new": "New!"
   },
   "GameDetails": {
     "category": "Category",
@@ -17,7 +18,15 @@
   },
   "SubmitGame": {
     "title": "Submit a Drinking Game",
-    "login": "You need to be logged in to submit a drinking game."
+    "login": "You need to be logged in to submit a drinking game.",
+    "submitSuccessful": "Game submitted successfully!",
+    "submitFailure": "Failed to submit the game!",
+    "submitAction": "Submit",
+    "gameName": "Game Name",
+    "alias": "Alias",
+    "playerCount": "Minimum players",
+    "necessities": "Necessities",
+    "description": "Description"
   },
   "AdminGeneral": {
     "title": "Admin General",
@@ -51,7 +60,9 @@
     "loginButton": "Login",
     "dontHaveAccount": "You don't have an account yet?",
     "registerLink": "Register here.",
-    "credentialsAreNotCorrect": "Credentials are not correct."
+    "credentialsAreNotCorrect": "Credentials are not correct.",
+    "loginSuccessful": "Login successful!",
+    "loginFailure": "Failed to log in."
   },
   "Register": {
     "title": "Register",
@@ -61,7 +72,9 @@
     "registerButton": "Register",
     "alreadyHaveAccount": "You already have an account?",
     "loginLink": "Login here.",
-    "confirmPasswordPlaceholder": "Confirm password"
+    "confirmPasswordPlaceholder": "Confirm password",
+    "registerSuccessful": "Register successful!",
+    "registerFailure": "Failed to register."
   },
   "ManageCategories": {
     "manageCategoriesTitle": "Manage Categories",
@@ -106,8 +119,17 @@
     "updateGameButton": "Update Drinking Game",
     "cancelButton": "Cancel"
   },
+  "DeleteCategoryModal": {
+    "deleteCategoryTitle": "Delete Category",
+    "deleteCategoryWarning": "Do you really want to delete this category?",
+    "deleteCategoryButton": "Delete",
+    "cancelButton": "Cancel"
+  },
   "DeleteGameModal": {
-    "deleteGameTitle": "Delete Drinking Game"
+    "deleteGameTitle": "Delete Drinking Game",
+    "deleteGameWarning": "Do you really want to delete this epic game?",
+    "deleteGameButton": "Delete",
+    "cancelButton": "Cancel"
   },
   "ManageGames": {
     "title": "Manage Drinking Games",
@@ -135,7 +157,7 @@
     "category": "Category",
     "creator": "Creator",
     "approve": "Approve",
-    "Registreren": "Reject"
+    "reject": "Reject"
   },
   "DiceRoller": {
     "title": "Dice Roller",

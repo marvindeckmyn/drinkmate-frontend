@@ -1,26 +1,92 @@
 {
   "GameList": {
-    "title": "Jeux à Boire"
+    "title": "Jeux à boire",
+    "minPlayers": "joueurs",
+    "minCountPlayers": "Nombre minimum de joueurs",
+    "searchPlaceholder": "Recherche de jeux à boire...",
+    "categories": "Catégories",
+    "new": "Nouveau!"
+  },
+  "GameDetails": {
+    "category": "Catégorie",
+    "minPlayers": "Nombre minimum de joueurs",
+    "creator": "Créateur",
+    "alias": "Aussi connu sous le nom de",
+    "description": "Description",
+    "necessities": "Nécessités",
+    "details": "Détails"
+  },
+  "SubmitGame": {
+    "title": "Proposer un jeu à boire",
+    "login": "Vous devez être connecté pour soumettre un jeu à boire.",
+    "submitSuccessful": "Le jeu a été envoyé avec succès!",
+    "submitFailure": "Le jeu n'a pas été soumis!",
+    "submitAction": "Soumettre",
+    "gameName": "Nom du jeu",
+    "alias": "Alias",
+    "playerCount": "Nombre minimum de joueurs",
+    "necessities": "Nécessités",
+    "description": "Description"
+  },
+  "AdminGeneral": {
+    "title": "Administration générale",
+    "manageUserAdminPrivileges": "Gérer les privilèges d'administration des utilisateurs",
+    "admin": "Administrateur",
+    "notAdmin": "Pas d'administration",
+    "grantAdmin": "Administrateur de la subvention",
+    "revokeAdmin": "Révoquer l'administrateur",
+    "manageAdmins": "Administrateurs",
+    "manageRecentUsers": "Utilisateurs récents",
+    "searchUsers": "Recherche d'utilisateurs..."
+  },
+  "Sidebar": {
+    "games": "Jeux à boire",
+    "adminDashboard": "Tableau de bord administratif",
+    "submitAGame": "Soumettre un jeu",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "AdminDashboard": {
+    "title": "Tableau de bord administratif",
+    "general": "Général",
+    "categories": "Catégories",
+    "submittedGames": "Jeux soumis",
+    "games": "Jeux à boire"
   },
   "Login": {
     "title": "Connexion",
-    "emailPlaceholder": "Courrier électronique",
+    "identifierPlaceholder": "Nom d'utilisateur/E-mail",
     "passwordPlaceholder": "Mot de passe",
-    "loginButton": "Connexion"
+    "loginButton": "Connexion",
+    "dontHaveAccount": "Vous n'avez pas encore de compte ?",
+    "registerLink": "S'inscrire ici.",
+    "credentialsAreNotCorrect": "Les références ne sont pas correctes.",
+    "loginSuccessful": "Connexion réussie!",
+    "loginFailure": "Échec de la connexion."
   },
   "Register": {
     "title": "Registre",
     "usernamePlaceholder": "Nom d'utilisateur",
     "emailPlaceholder": "Courrier électronique",
     "passwordPlaceholder": "Mot de passe",
-    "registerButton": "Registre"
+    "registerButton": "Registre",
+    "alreadyHaveAccount": "Vous avez déjà un compte?",
+    "loginLink": "Connectez-vous ici.",
+    "confirmPasswordPlaceholder": "Confirmer le mot de passe",
+    "registerSuccessful": "Enregistrement réussi!",
+    "registerFailure": "Échec de l'enregistrement."
   },
   "ManageCategories": {
     "manageCategoriesTitle": "Gérer les catégories",
     "createCategory": "Créer une catégorie",
     "categories": "Catégories",
     "edit": "Editer",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "creationSuccess": "Catégorie créée avec succès!",
+    "updateSuccess": "La catégorie a été mise à jour avec succès!",
+    "updateFail": "La mise à jour de la catégorie a échoué!",
+    "deleteSuccess": "Catégorie supprimée avec succès!",
+    "deleteFail": "La suppression de la catégorie a échoué!"
   },
   "CreateCategoryModal": {
     "createCategoryTitle": "Créer une catégorie",
@@ -31,5 +97,72 @@
     "editCategoryTitle": "Modifier la catégorie",
     "updateCategoryButton": "Catégorie de mise à jour",
     "cancelButton": "Annuler"
+  },
+  "CreateGameModal": {
+    "createGameButton": "Créer un jeu à boire",
+    "language": "Langue",
+    "gameTitle": "Titre du jeu",
+    "alias": "Alias",
+    "category": "Catégorie",
+    "playerCount": "Nombre de joueurs",
+    "image": "Image",
+    "description": "Description",
+    "necessities": "Nécessités",
+    "removeNecessityButton": "Supprimer la nécessité",
+    "addNecessityButton": "Ajouter la nécessité",
+    "cancelButton": "Annuler",
+    "publish": "Publier",
+    "new": "Marquer comme nouveau"
+  },
+  "EditGameModal": {
+    "editGameButton": "Editer",
+    "updateGameButton": "Update jeu à boire",
+    "cancelButton": "Annuler"
+  },
+  "DeleteCategoryModal": {
+    "deleteCategoryTitle": "Supprimer la catégorie",
+    "deleteCategoryWarning": "Voulez-vous vraiment supprimer cette catégorie?",
+    "deleteCategoryButton": "Supprimer",
+    "cancelButton": "Annuler"
+  },
+  "DeleteGameModal": {
+    "deleteGameTitle": "Supprimer le jeu de boisson",
+    "deleteGameWarning": "Voulez-vous vraiment supprimer ce jeu épique ?",
+    "deleteGameButton": "Supprimer",
+    "cancelButton": "Annuler"
+  },
+  "ManageGames": {
+    "title": "Gérer les jeux d'alcool",
+    "gamesTitle": "Jeux à boire",
+    "delete": "Supprimer",
+    "creationSuccess": "Jeu créé avec succès!",
+    "updateSuccess": "Le jeu a été mis à jour avec succès!",
+    "toggleStatusSuccess": "Le statut 'nouveau' du jeu a été basculé avec succès!",
+    "toggleStatusFail": "Échec du basculement de l'état 'nouveau' du jeu!",
+    "togglePublishSuccess": "Le statut de publication du jeu a été activé avec succès!",
+    "togglePublishFail": "Échec du basculement de l'état de publication du jeu!",
+    "deleteSuccess": "Jeu supprimé avec succès!",
+    "deleteFail": "Échec de la suppression du jeu!",
+    "search": "Recherche"
+  },
+  "ManageUserSubmittedGames": {
+    "title": "Gérer les jeux soumis par les utilisateurs",
+    "submittedGamesTitle": "Jeux soumis"
+  },
+  "SubmittedGame": {
+    "description": "Description",
+    "necessities": "Nécessités",
+    "details": "Détails",
+    "minimumPlayers": "Nombre minimum de joueurs",
+    "category": "Catégorie",
+    "creator": "Créateur",
+    "approve": "Approuver",
+    "reject": "Rejeter"
+  },
+  "DiceRoller": {
+    "title": "Rouleau de dés",
+    "description": "Vous n'avez pas de dés sous la main ? Dans ce cas, vous pouvez utiliser ceci !",
+    "roll": "Rouleau",
+    "youRolled": "Vous avez roulé"
   }
 }

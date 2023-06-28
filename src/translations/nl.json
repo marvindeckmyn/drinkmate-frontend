@@ -4,7 +4,8 @@
     "minPlayers": "spelers",
     "minCountPlayers": "Minimum spelers",
     "searchPlaceholder": "Zoek naar drankspelletjes...",
-    "categories": "Categorieën"
+    "categories": "Categorieën",
+    "new": "Nieuw!"
   },
   "GameDetails": {
     "category": "Categorie",
@@ -17,7 +18,15 @@
   },
   "SubmitGame": {
     "title": "Maak een Drankspelletje",
-    "login": "Je moet ingelogd zijn om een drankspelletje te maken."
+    "login": "Je moet ingelogd zijn om een drankspelletje te maken.",
+    "submitSuccessful": "Drankspelletje succesvol ingezonden!",
+    "submitFailure": "Het is niet gelukt om het spel in te zenden.",
+    "submitAction": "Inzenden",
+    "gameName": "Naam spel",
+    "alias": "Alias",
+    "playerCount": "Minimum aantal spelers",
+    "necessities": "Benodigdheden",
+    "description": "Beschrijving"
   },
   "AdminGeneral": {
     "title": "Admin Algemeen",
@@ -51,7 +60,9 @@
     "loginButton": "Inloggen",
     "dontHaveAccount": "Heb je nog geen account?",
     "registerLink": "Registreer hier.",
-    "credentialsAreNotCorrect": "Login niet correct."
+    "credentialsAreNotCorrect": "Login niet correct.",
+    "loginSuccessful": "Inloggen gelukt!",
+    "loginFailure": "Inloggen mislukt."
   },
   "Register": {
     "title": "Registreren",
@@ -61,7 +72,9 @@
     "registerButton": "Registreren",
     "alreadyHaveAccount": "Heb je al een account?",
     "loginLink": "Log hier in.",
-    "confirmPasswordPlaceholder": "Bevestig wachtwoord"
+    "confirmPasswordPlaceholder": "Bevestig wachtwoord",
+    "registerSuccessful": "Registreren gelukt!",
+    "registerFailure": "Registreren mislukt."
   },
   "ManageCategories": {
     "manageCategoriesTitle": "Categorieën beheren",
@@ -106,8 +119,17 @@
     "updateGameButton": "Update Drankspelletje",
     "cancelButton": "Annuleren"
   },
+  "DeleteCategoryModal": {
+    "deleteCategoryTitle": "Verwijder Categorie",
+    "deleteCategoryWarning": "Wil je deze categorie echt verwijderen?",
+    "deleteCategoryButton": "Verwijderen",
+    "cancelButton": "Annuleren"
+  },
   "DeleteGameModal": {
-    "deleteGameTitle": "Verwijder Drankspelletje"
+    "deleteGameTitle": "Verwijder Drankspelletje",
+    "deleteGameWarning": "Wil je dit epische spel echt verwijderen?",
+    "deleteGameButton": "Verwijderen",
+    "cancelButton": "Annuleren"
   },
   "ManageGames": {
     "title": "Drankspelletjes beheren",
@@ -135,7 +157,7 @@
     "category": "Categorie",
     "creator": "Maker",
     "approve": "Goedkeuren",
-    "Registreren": "Weigeren"
+    "reject": "Weigeren"
   },
   "DiceRoller": {
     "title": "Dobbelstenen",

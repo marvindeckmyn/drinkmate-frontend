@@ -26,11 +26,10 @@ const Register = ({ setAuthToken, handleLogin }) => {
       if (response.data.token) {
         setAuthToken(response.data.token);
         handleLogin(response.data.userId, response.data.isAdmin);
-        toast.success('Register successful!');
+        toast.success(t('Register.registerSuccessful'));
         navigate('/');
       } else {
-        console.error('Registration error: Token not received.');
-        toast.error('Failed to register.')
+        toast.error('Register.registerFailure')
       }
     } catch (err) {
       console.error(err);

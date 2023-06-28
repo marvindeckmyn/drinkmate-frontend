@@ -22,10 +22,10 @@ const Login = ({ setAuthToken, handleLogin }) => {
       if (response.data.token) {
         setAuthToken(response.data.token);
         handleLogin(response.data.userId, response.data.isAdmin);
-        toast.success('Login successful!');
+        toast.success(t('Login.loginSuccessful'));
         navigate('/');
       } else {
-        toast.error('Failed to log in.')
+        toast.error('Login.loginFailure')
       }
     } catch (err) {
       console.error(err);

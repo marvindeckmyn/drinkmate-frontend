@@ -1,26 +1,92 @@
 {
   "GameList": {
-    "title": "Juegos de Beber"
+    "title": "Juegos de beber",
+    "minPlayers": "jugadores",
+    "minCountPlayers": "Mínimo de jugadores",
+    "searchPlaceholder": "Buscar juegos de beber...",
+    "categories": "Categorías",
+    "new": "Nuevo!"
+  },
+  "GameDetails": {
+    "category": "Categoría",
+    "minPlayers": "Mínimo de jugadores",
+    "creator": "Creador",
+    "alias": "También conocido como",
+    "description": "Descripción",
+    "necessities": "Necesidades",
+    "details": "Detalles"
+  },
+  "SubmitGame": {
+    "title": "Presentar un juego de beber",
+    "login": "Tienes que iniciar sesión para enviar un juego de beber.",
+    "submitSuccessful": "¡Juego enviado con éxito!",
+    "submitFailure": "No se ha podido enviar el juego.",
+    "submitAction": "Enviar",
+    "gameName": "Nombre del juego",
+    "alias": "Alias",
+    "playerCount": "Mínimo de jugadores",
+    "necessities": "Necesidades",
+    "description": "Descripción"
+  },
+  "AdminGeneral": {
+    "title": "Admin General",
+    "manageUserAdminPrivileges": "Gestión de privilegios de administración de usuarios",
+    "admin": "Admin",
+    "notAdmin": "No Admin",
+    "grantAdmin": "Administración de subvenciones",
+    "revokeAdmin": "Revocar Admin",
+    "manageAdmins": "Admins",
+    "manageRecentUsers": "Usuarios recientes",
+    "searchUsers": "Buscar usuarios..."
+  },
+  "Sidebar": {
+    "games": "Juegos de beber",
+    "adminDashboard": "Panel de administración",
+    "submitAGame": "Presentar un juego",
+    "login": "Inicio de sesión",
+    "logout": "Cierre de sesión"
+  },
+  "AdminDashboard": {
+    "title": "Panel de administración",
+    "general": "General",
+    "categories": "Categorías",
+    "submittedGames": "Juegos enviados",
+    "games": "Juegos de beber"
   },
   "Login": {
     "title": "Inicio de sesión",
-    "emailPlaceholder": "Correo electrónico",
+    "identifierPlaceholder": "Nombre de usuario/Correo electrónico",
     "passwordPlaceholder": "Contraseña",
-    "loginButton": "Inicio de sesión"
+    "loginButton": "Inicio de sesión",
+    "dontHaveAccount": "¿Aún no tienes cuenta?",
+    "registerLink": "Regístrese aquí.",
+    "credentialsAreNotCorrect": "Las credenciales no son correctas.",
+    "loginSuccessful": "Inicio de sesión correcto.",
+    "loginFailure": "No se ha podido iniciar sesión."
   },
   "Register": {
     "title": "Regístrese en",
     "usernamePlaceholder": "Nombre de usuario",
     "emailPlaceholder": "Correo electrónico",
     "passwordPlaceholder": "Contraseña",
-    "registerButton": "Regístrese en"
+    "registerButton": "Regístrese en",
+    "alreadyHaveAccount": "¿Ya tiene una cuenta?",
+    "loginLink": "Inicie sesión aquí.",
+    "confirmPasswordPlaceholder": "Confirmar contraseña",
+    "registerSuccessful": "Regístrese con éxito",
+    "registerFailure": "No se ha podido registrar."
   },
   "ManageCategories": {
     "manageCategoriesTitle": "Gestionar categorías",
     "createCategory": "Crear categoría",
     "categories": "Categorías",
     "edit": "Editar",
-    "delete": "Borrar"
+    "delete": "Borrar",
+    "creationSuccess": "¡Categoría creada con éxito!",
+    "updateSuccess": "¡Categoría actualizada correctamente!",
+    "updateFail": "No se ha podido actualizar la categoría.",
+    "deleteSuccess": "¡Categoría eliminada con éxito!",
+    "deleteFail": "No se ha podido eliminar la categoría."
   },
   "CreateCategoryModal": {
     "createCategoryTitle": "Crear categoría",
@@ -29,7 +95,74 @@
   },
   "EditCategoryModal": {
     "editCategoryTitle": "Editar categoría",
-    "updateCategoryButton": "Actualizar categoría",
+    "updateCategoryButton": "Categoría de actualización",
     "cancelButton": "Cancelar"
+  },
+  "CreateGameModal": {
+    "createGameButton": "Crear juego de beber",
+    "language": "Idioma",
+    "gameTitle": "Título del juego",
+    "alias": "Alias",
+    "category": "Categoría",
+    "playerCount": "Recuento de jugadores",
+    "image": "Imagen",
+    "description": "Descripción",
+    "necessities": "Necesidades",
+    "removeNecessityButton": "Eliminar la necesidad",
+    "addNecessityButton": "Añadir Necesidad",
+    "cancelButton": "Cancelar",
+    "publish": "Publique",
+    "new": "Marcar como nuevo"
+  },
+  "EditGameModal": {
+    "editGameButton": "Editar",
+    "updateGameButton": "Actualizar el juego de beber",
+    "cancelButton": "Cancelar"
+  },
+  "DeleteCategoryModal": {
+    "deleteCategoryTitle": "Eliminar categoría",
+    "deleteCategoryWarning": "¿Realmente desea eliminar esta categoría?",
+    "deleteCategoryButton": "Borrar",
+    "cancelButton": "Cancelar"
+  },
+  "DeleteGameModal": {
+    "deleteGameTitle": "Borrar el juego de beber",
+    "deleteGameWarning": "¿De verdad quieres borrar este juego épico?",
+    "deleteGameButton": "Borrar",
+    "cancelButton": "Cancelar"
+  },
+  "ManageGames": {
+    "title": "Gestionar los juegos de beber",
+    "gamesTitle": "Juegos de beber",
+    "delete": "Borrar",
+    "creationSuccess": "¡Juego creado con éxito!",
+    "updateSuccess": "El juego se ha actualizado correctamente.",
+    "toggleStatusSuccess": "El estado 'nuevo' del juego se ha cambiado correctamente.",
+    "toggleStatusFail": "No se ha podido cambiar el estado del juego a 'nuevo'.",
+    "togglePublishSuccess": "Se ha cambiado el estado de publicación del juego.",
+    "togglePublishFail": "No se ha podido cambiar el estado de publicación del juego.",
+    "deleteSuccess": "¡Juego eliminado con éxito!",
+    "deleteFail": "No se ha podido eliminar el juego.",
+    "search": "Buscar en"
+  },
+  "ManageUserSubmittedGames": {
+    "title": "Gestión de juegos enviados por usuarios",
+    "submittedGamesTitle": "Juegos enviados"
+  },
+  "SubmittedGame": {
+    "description": "Descripción",
+    "necessities": "Necesidades",
+    "details": "Detalles",
+    "minimumPlayers": "Mínimo de jugadores",
+    "category": "Categoría",
+    "creator": "Creador",
+    "approve": "Aprobar",
+    "reject": "Rechazar"
+  },
+  "DiceRoller": {
+    "title": "Rodillo de dados",
+    "description": "¿No tienes dados a mano? Entonces, ¡puedes hacer uso de esto!",
+    "roll": "Rollo",
+    "youRolled": "Usted rodó"
   }
 }

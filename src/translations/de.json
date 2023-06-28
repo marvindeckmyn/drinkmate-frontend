@@ -1,26 +1,92 @@
 {
   "GameList": {
-    "title": "Trinkspiele"
+    "title": "Trinkspiele",
+    "minPlayers": "Spieler",
+    "minCountPlayers": "Minimum Spieler",
+    "searchPlaceholder": "Suche nach Trinkspielen...",
+    "categories": "Kategorien",
+    "new": "Neu!"
+  },
+  "GameDetails": {
+    "category": "Kategorie",
+    "minPlayers": "Minimum Spieler",
+    "creator": "Schöpfer",
+    "alias": "Auch bekannt als",
+    "description": "Beschreibung",
+    "necessities": "Notwendiges",
+    "details": "Einzelheiten"
+  },
+  "SubmitGame": {
+    "title": "Trinkspiel einreichen",
+    "login": "Du musst eingeloggt sein, um ein Trinkspiel einzureichen.",
+    "submitSuccessful": "Spiel erfolgreich abgeschickt!",
+    "submitFailure": "Ich konnte das Spiel nicht abschicken!",
+    "submitAction": "Einreichen",
+    "gameName": "Spiel Name",
+    "alias": "Alias",
+    "playerCount": "Minimum Spieler",
+    "necessities": "Notwendiges",
+    "description": "Beschreibung"
+  },
+  "AdminGeneral": {
+    "title": "Verwaltung allgemein",
+    "manageUserAdminPrivileges": "Verwalten von Benutzerverwaltungsrechten",
+    "admin": "Verwaltung",
+    "notAdmin": "Nicht Verwaltung",
+    "grantAdmin": "Zuschussverwaltung",
+    "revokeAdmin": "Verwaltung widerrufen",
+    "manageAdmins": "Verwaltungen",
+    "manageRecentUsers": "Neue Benutzer",
+    "searchUsers": "Benutzer suchen..."
+  },
+  "Sidebar": {
+    "games": "Trinkspiele",
+    "adminDashboard": "Verwaltungs-Dashboard",
+    "submitAGame": "Ein Spiel einreichen",
+    "login": "Anmeldung",
+    "logout": "Abmeldung"
+  },
+  "AdminDashboard": {
+    "title": "Verwaltungs-Dashboard",
+    "general": "Allgemein",
+    "categories": "Kategorien",
+    "submittedGames": "Eingereichte Spiele",
+    "games": "Trinkspiele"
   },
   "Login": {
     "title": "Anmeldung",
     "emailPlaceholder": "E-Mail",
     "passwordPlaceholder": "Passwort",
-    "loginButton": "Anmeldung"
+    "loginButton": "Anmeldung",
+    "dontHaveAccount": "Sie haben noch kein Konto?",
+    "registerLink": "Registrieren Sie sich hier.",
+    "credentialsAreNotCorrect": "Die Berechtigungsnachweise sind nicht korrekt.",
+    "loginSuccessful": "Anmeldung erfolgreich!",
+    "loginFailure": "Anmeldung fehlgeschlagen."
   },
   "Register": {
     "title": "Register",
     "usernamePlaceholder": "Benutzername",
     "emailPlaceholder": "E-Mail",
     "passwordPlaceholder": "Passwort",
-    "registerButton": "Register"
+    "registerButton": "Register",
+    "alreadyHaveAccount": "Sie haben bereits ein Konto?",
+    "loginLink": "Hier anmelden.",
+    "confirmPasswordPlaceholder": "Bestätigen Sie das Passwort",
+    "registerSuccessful": "Anmeldung erfolgreich!",
+    "registerFailure": "Die Registrierung ist fehlgeschlagen."
   },
   "ManageCategories": {
     "manageCategoriesTitle": "Kategorien verwalten",
     "createCategory": "Kategorie erstellen",
     "categories": "Kategorien",
     "edit": "Bearbeiten",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "creationSuccess": "Kategorie erfolgreich erstellt!",
+    "updateSuccess": "Kategorie erfolgreich aktualisiert!",
+    "updateFail": "Die Aktualisierung der Kategorie ist fehlgeschlagen!",
+    "deleteSuccess": "Kategorie erfolgreich gelöscht!",
+    "deleteFail": "Die Kategorie konnte nicht gelöscht werden!"
   },
   "CreateCategoryModal": {
     "createCategoryTitle": "Kategorie erstellen",
@@ -31,5 +97,72 @@
     "editCategoryTitle": "Kategorie bearbeiten",
     "updateCategoryButton": "Kategorie aktualisieren",
     "cancelButton": "Abbrechen"
+  },
+  "CreateGameModal": {
+    "createGameButton": "Trinkspiel erstellen",
+    "language": "Sprache",
+    "gameTitle": "Titel des Spiels",
+    "alias": "Alias",
+    "category": "Kategorie",
+    "playerCount": "Spieleranzahl",
+    "image": "Bild",
+    "description": "Beschreibung",
+    "necessities": "Notwendiges",
+    "removeNecessityButton": "Remove Necessity",
+    "addNecessityButton": "Notwendigkeit entfernen",
+    "cancelButton": "Abbrechen",
+    "publish": "Veröffentlichen",
+    "new": "Als neu markieren"
+  },
+  "EditGameModal": {
+    "editGameButton": "Bearbeiten",
+    "updateGameButton": "Update Trinkspiel",
+    "cancelButton": "Abbrechen"
+  },
+  "DeleteCategoryModal": {
+    "deleteCategoryTitle": "Kategorie löschen",
+    "deleteCategoryWarning": "Wollen Sie diese Kategorie wirklich löschen?",
+    "deleteCategoryButton": "Löschen",
+    "cancelButton": "Abbrechen"
+  },
+  "DeleteGameModal": {
+    "deleteGameTitle": "Trinkspiel löschen",
+    "deleteGameWarning": "Willst du dieses epische Spiel wirklich löschen?",
+    "deleteGameButton": "Löschen",
+    "cancelButton": "Abbrechen"
+  },
+  "ManageGames": {
+    "title": "Trinkspiele verwalten",
+    "gamesTitle": "Trinkspiele",
+    "delete": "Löschen",
+    "creationSuccess": "Spiel erfolgreich erstellt!",
+    "updateSuccess": "Spiel erfolgreich aktualisiert!",
+    "toggleStatusSuccess": "Der Status des Spiels 'neu' wurde erfolgreich umgeschaltet!",
+    "toggleStatusFail": "Es ist nicht gelungen, den Status des Spiels 'neu' umzuschalten!",
+    "togglePublishSuccess": "Der Veröffentlichungsstatus des Spiels wurde erfolgreich umgeschaltet!",
+    "togglePublishFail": "Es ist nicht gelungen, den Veröffentlichungsstatus des Spiels zu ändern!",
+    "deleteSuccess": "Spiel erfolgreich gelöscht!",
+    "deleteFail": "Das Spiel kann nicht gelöscht werden!",
+    "search": "Suche"
+  },
+  "ManageUserSubmittedGames": {
+    "title": "Verwalten der von Benutzern eingereichten Spiele",
+    "submittedGamesTitle": "Eingereichte Spiele"
+  },
+  "SubmittedGame": {
+    "description": "Beschreibung",
+    "necessities": "Notwendiges",
+    "details": "Einzelheiten",
+    "minimumPlayers": "Minimum Spieler",
+    "category": "Kategorie",
+    "creator": "Schöpfer",
+    "approve": "Genehmigen Sie",
+    "reject": "Zurückweisen"
+  },
+  "DiceRoller": {
+    "title": "Würfelroller",
+    "description": "Keine Würfel zur Hand? Dann können Sie das hier verwenden!",
+    "roll": "Rolle",
+    "youRolled": "Sie haben gewürfelt"
   }
 }

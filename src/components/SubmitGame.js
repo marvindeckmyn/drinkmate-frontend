@@ -76,10 +76,10 @@ const SubmitGame = ({ authToken }) => {
         },
       });
 
-      toast.success('Game submitted successfully!');
+      toast.success(t('SubmitGame.submitSuccessful'));
     } catch (err) {
       console.error(err);
-      toast.error('Failed to submit the game!')
+      toast.error(t('SubmitGame.submitFailure'))
     }
   };
 
@@ -99,10 +99,10 @@ const SubmitGame = ({ authToken }) => {
     <div className="main">
       <div className="submit-game">
       <ToastContainer position={toast.POSITION.BOTTOM_CENTER} />
-        <h1>Submit a Game</h1>
+        <h1>{t('SubmitGame.title')}</h1>
         <form onSubmit={handleSubmit}>
-          <input type="text" name="name" placeholder="Game Name" onChange={handleChange} value={newGame.name} required />
-          <input type="text" name="alias" placeholder="Alias" onChange={handleChange} value={newGame.alias} />
+          <input type="text" name="name" placeholder={t('SubmitGame.gameName')} onChange={handleChange} value={newGame.name} required />
+          <input type="text" name="alias" placeholder={t('SubmitGame.alias')} onChange={handleChange} value={newGame.alias} />
           <select
             value={newGame.category_id}
             onChange={(e) =>
@@ -120,17 +120,17 @@ const SubmitGame = ({ authToken }) => {
               );
             })}
           </select>
-          <input type="number" name="player_count" placeholder="Player Count" onChange={handleChange} value={newGame.player_count} required />
-          <input type="text" name="necessities" placeholder="Necessities" onChange={handleChange} value={newGame.necessities} />
+          <input type="number" name="player_count" placeholder={t('SubmitGame.playerCount')} onChange={handleChange} value={newGame.player_count} required />
+          <input type="text" name="necessities" placeholder={t('SubmitGame.necessities')} onChange={handleChange} value={newGame.necessities} />
           <Editor
             editorState={editorState}
             onEditorStateChange={handleEditorStateChange}
             toolbar={{
               options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
             }}
-            placeholder="Description"
+            placeholder={t('SubmitGame.description')}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">{t('SubmitGame.submitAction')}</button>
         </form>
       </div>
     </div>

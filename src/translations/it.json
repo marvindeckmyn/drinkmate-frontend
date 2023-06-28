@@ -1,26 +1,92 @@
 {
   "GameList": {
-    "title": "Giochi di Bevute"
+    "title": "Giochi di bevute",
+    "minPlayers": "giocatori",
+    "minCountPlayers": "Giocatori minimi",
+    "searchPlaceholder": "Ricerca di giochi alcolici...",
+    "categories": "Categorie",
+    "new": "Nuovo!"
+  },
+  "GameDetails": {
+    "category": "Categoria",
+    "minPlayers": "Giocatori minimi",
+    "creator": "Creatore",
+    "alias": "Conosciuto anche come",
+    "description": "Descrizione",
+    "necessities": "Necessità",
+    "details": "Dettagli"
+  },
+  "SubmitGame": {
+    "title": "Invia un gioco alcolico",
+    "login": "Per inviare un gioco alcolico è necessario aver effettuato il login.",
+    "submitSuccessful": "Gioco inviato con successo!",
+    "submitFailure": "Impossibile inviare la partita!",
+    "submitAction": "Invia",
+    "gameName": "Nome del gioco",
+    "alias": "Alias",
+    "playerCount": "Giocatori minimi",
+    "necessities": "Necessità",
+    "description": "Descrizione"
+  },
+  "AdminGeneral": {
+    "title": "Amministratore Generale",
+    "manageUserAdminPrivileges": "Gestire i privilegi di amministrazione degli utenti",
+    "admin": "Admin",
+    "notAdmin": "Non Admin",
+    "grantAdmin": "Sovvenzione Admin",
+    "revokeAdmin": "Revocare l'amministrazione",
+    "manageAdmins": "Amministratori",
+    "manageRecentUsers": "Utenti recenti",
+    "searchUsers": "Ricerca utenti..."
+  },
+  "Sidebar": {
+    "games": "Giochi di bevute",
+    "adminDashboard": "Cruscotto amministratore",
+    "submitAGame": "Invia un gioco",
+    "login": "Accesso",
+    "logout": "Disconnessione"
+  },
+  "AdminDashboard": {
+    "title": "Cruscotto amministratore",
+    "general": "Generale",
+    "categories": "Categorie",
+    "submittedGames": "Giochi inviati",
+    "games": "Giochi di bevute"
   },
   "Login": {
     "title": "Accesso",
-    "emailPlaceholder": "E-mail",
+    "identifierPlaceholder": "Nome utente/E-mail",
     "passwordPlaceholder": "Password",
-    "loginButton": "Accesso"
+    "loginButton": "Accesso",
+    "dontHaveAccount": "Non hai ancora un account?",
+    "registerLink": "Registratevi qui.",
+    "credentialsAreNotCorrect": "Le credenziali non sono corrette.",
+    "loginSuccessful": "Accesso riuscito!",
+    "loginFailure": "Accesso non riuscito."
   },
   "Register": {
     "title": "Registro",
     "usernamePlaceholder": "Nome utente",
     "emailPlaceholder": "E-mail",
     "passwordPlaceholder": "Password",
-    "registerButton": "Registro"
+    "registerButton": "Registro",
+    "alreadyHaveAccount": "Avete già un account?",
+    "loginLink": "Effettuare il login qui.",
+    "confirmPasswordPlaceholder": "Confermare la password",
+    "registerSuccessful": "Registrazione riuscita!",
+    "registerFailure": "Registrazione fallita."
   },
   "ManageCategories": {
     "manageCategoriesTitle": "Gestione delle categorie",
     "createCategory": "Crea categoria",
     "categories": "Categorie",
     "edit": "Modifica",
-    "delete": "Cancellare"
+    "delete": "Cancellare",
+    "creationSuccess": "Categoria creata con successo!",
+    "updateSuccess": "Categoria aggiornata con successo!",
+    "updateFail": "Impossibile aggiornare la categoria!",
+    "deleteSuccess": "Categoria cancellata con successo!",
+    "deleteFail": "Cancellazione della categoria fallita!"
   },
   "CreateCategoryModal": {
     "createCategoryTitle": "Crea categoria",
@@ -29,7 +95,74 @@
   },
   "EditCategoryModal": {
     "editCategoryTitle": "Modifica categoria",
-    "updateCategoryButton": "Categoria di aggiornamento",
+    "updateCategoryButton": "Aggiornamento categoria",
     "cancelButton": "Annullamento"
+  },
+  "CreateGameModal": {
+    "createGameButton": "Creare un gioco di bevute",
+    "language": "Lingua",
+    "gameTitle": "Titolo del gioco",
+    "alias": "Alias",
+    "category": "Categoria",
+    "playerCount": "Conteggio giocatori",
+    "image": "Immagine",
+    "description": "Descrizione",
+    "necessities": "Necessità",
+    "removeNecessityButton": "Rimuovere la necessità",
+    "addNecessityButton": "Aggiungere la necessità",
+    "cancelButton": "Annullamento",
+    "publish": "Pubblicare",
+    "new": "Contrassegnare come nuovo"
+  },
+  "EditGameModal": {
+    "editGameButton": "Modifica",
+    "updateGameButton": "Aggiornamento gioco di bevute",
+    "cancelButton": "Annullamento"
+  },
+  "DeleteCategoryModal": {
+    "deleteCategoryTitle": "Cancellare la categoria",
+    "deleteCategoryWarning": "Volete davvero cancellare questa categoria?",
+    "deleteCategoryButton": "Cancellare",
+    "cancelButton": "Annullamento"
+  },
+  "DeleteGameModal": {
+    "deleteGameTitle": "Cancellare il gioco di bevute",
+    "deleteGameWarning": "Vuoi davvero cancellare questo gioco epico?",
+    "deleteGameButton": "Cancellare",
+    "cancelButton": "Annullamento"
+  },
+  "ManageGames": {
+    "title": "Gestire i giochi di bevute",
+    "gamesTitle": "Giochi di bevute",
+    "delete": "Cancellare",
+    "creationSuccess": "Gioco creato con successo!",
+    "updateSuccess": "Il gioco è stato aggiornato con successo!",
+    "toggleStatusSuccess": "Lo stato 'nuovo' del gioco è stato attivato con successo!",
+    "toggleStatusFail": "Impossibile attivare lo stato 'nuovo' del gioco!",
+    "togglePublishSuccess": "Lo stato di 'pubblicazione' del gioco è stato attivato con successo!",
+    "togglePublishFail": "Impossibile attivare lo stato di 'pubblicazione' del gioco!",
+    "deleteSuccess": "Gioco eliminato con successo!",
+    "deleteFail": "Impossibile cancellare il gioco!",
+    "search": "Ricerca"
+  },
+  "ManageUserSubmittedGames": {
+    "title": "Gestire i giochi inviati dagli utenti",
+    "submittedGamesTitle": "Giochi inviati"
+  },
+  "SubmittedGame": {
+    "description": "Descrizione",
+    "necessities": "Necessità",
+    "details": "Dettagli",
+    "minimumPlayers": "Giocatori minimi",
+    "category": "Categoria",
+    "creator": "Creatore",
+    "approve": "Approvare",
+    "reject": "Rifiuto"
+  },
+  "DiceRoller": {
+    "title": "Rullo di dadi",
+    "description": "Non avete dadi a portata di mano? Allora potete usare questo!",
+    "roll": "Rotolo",
+    "youRolled": "Hai tirato"
   }
 }

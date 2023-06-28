@@ -201,7 +201,7 @@ const GameList = () => {
                   <div className="game-info">
                     <h2 className="game-title">
                       {getTranslatedName(game.translations, game.name)}
-                      {game.new && <span className="new-indicator">New!</span>}
+                      {game.new && <span className="new-indicator">{t('GameList.new')}</span>}
                     </h2>
                     <p className="game-details">
                       {getTranslatedName(game.categoryTranslations, game.category)} • {game.player_count} {t('GameList.minPlayers')}
