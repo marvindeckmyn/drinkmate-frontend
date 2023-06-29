@@ -151,10 +151,10 @@ const ManageGames = ({ authToken }) => {
       });
       setCache('games', null);
       fetchGames();
-      toast.success('ManageGames.deleteSuccess');
+      toast.success(t('ManageGames.deleteSuccess'));
     } catch (err) {
       console.error(err);
-      toast.error('ManageGames.deleteFail')
+      toast.error(t('ManageGames.deleteFail'))
     }
   };
 
