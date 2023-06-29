@@ -245,6 +245,7 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
       </button>
       <Modal isOpen={isModalOpen} onRequestClose={toggleModal} contentLabel="Edit Game Modal">
         <div className="edit-game-modal-yes">
+          <h2>{t('EditGameModal.updateGameButton')}</h2>
           <label>{t('CreateGameModal.language')}</label>
           <select
             value={selectedLanguage && selectedLanguage.id}
