@@ -35,71 +35,71 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
     setUpdatedGame((prevUpdatedGame) => {
       const updatedGame = { ...prevUpdatedGame, ...game };
 
-    const getNecessitiesToDisplay = () => {
-      if (!updatedGame.necessities) return [];
+      const getNecessitiesToDisplay = () => {
+        if (!updatedGame.necessities) return [];
 
-      const existingNecessities = updatedGame.necessities.filter(
-        (necessity) => necessity.language_id === selectedLanguage?.id
-      );
+        const existingNecessities = updatedGame.necessities.filter(
+          (necessity) => necessity.language_id === selectedLanguage?.id
+        );
 
-      const editedNecessitiesForLanguage = editedNecessities[selectedLanguage.id];
+        const editedNecessitiesForLanguage = editedNecessities[selectedLanguage.id];
 
-      return editedNecessitiesForLanguage
-        ? editedNecessitiesForLanguage
-        : existingNecessities;
-    };
+        return editedNecessitiesForLanguage
+          ? editedNecessitiesForLanguage
+          : existingNecessities;
+      };
 
-    const updateNecessityInputs = (necessitiesToDisplay) => {
-      if (necessitiesToDisplay.length > 0) {
-        setNecessityInputs(necessitiesToDisplay.map((_, index) => index));
-      } else {
-        setNecessityInputs([0]);
-      }
-    };
-
-    const updateNecessityInputValues = (necessitiesToDisplay) => {
-      setNecessityInputValues((prevValues) => {
-        const updatedValues = { ...prevValues };
-        if (!updatedValues[selectedLanguage.id]) {
-          updatedValues[selectedLanguage.id] = necessitiesToDisplay.map((necessity) => {
-            if (!necessity) return '';
-            if (selectedLanguage.id === 1) {
-              return necessity.necessity_name;
-            } else {
-              return necessity.necessity_translation_name;
-            }
-          });
+      const updateNecessityInputs = (necessitiesToDisplay) => {
+        if (necessitiesToDisplay.length > 0) {
+          setNecessityInputs(necessitiesToDisplay.map((_, index) => index));
+        } else {
+          setNecessityInputs([0]);
         }
-        return updatedValues;
-      });
-    };
+      };
 
-    const necessitiesToDisplay = getNecessitiesToDisplay();
-    updateNecessityInputs(necessitiesToDisplay);
-    updateNecessityInputValues(necessitiesToDisplay);
-  
+      const updateNecessityInputValues = (necessitiesToDisplay) => {
+        setNecessityInputValues((prevValues) => {
+          const updatedValues = { ...prevValues };
+          if (!updatedValues[selectedLanguage.id]) {
+            updatedValues[selectedLanguage.id] = necessitiesToDisplay.map((necessity) => {
+              if (!necessity) return '';
+              if (selectedLanguage.id === 1) {
+                return necessity.necessity_name;
+              } else {
+                return necessity.necessity_translation_name;
+              }
+            });
+          }
+          return updatedValues;
+        });
+      };
+
+      const necessitiesToDisplay = getNecessitiesToDisplay();
+      updateNecessityInputs(necessitiesToDisplay);
+      updateNecessityInputValues(necessitiesToDisplay);
+
       if (game.image) {
         setImagePreviewUrl(`${config.API_BASE_URL}/${game.image}`);
       }
-  
+
       const descriptionObj = game.descriptions?.find(
         (description) => description.language_id === selectedLanguage.id
       );
-  
+
       const newEditorState = createEditorStateFromDescription(
         descriptionObj ? descriptionObj.description : null
       );
       setEditorState(newEditorState);
-  
+
       return updatedGame;
     });
-  }, [editedNecessities, game, selectedLanguage?.id]);  
-  
+  }, [editedNecessities, game, selectedLanguage?.id]);
+
   useEffect(() => {
-      if (game) {
-        setUpdatedGame(game);
-      }
-    }, [game]);
+    if (game) {
+      setUpdatedGame(game);
+    }
+  }, [game]);
 
   Modal.setAppElement('#root');
 
@@ -110,31 +110,31 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
   const handleLanguageChange = (e) => {
     const newLanguageId = parseInt(e.target.value);
     const newLanguage = languages?.find((lang) => lang.id === newLanguageId);
-  
+
     setEditedNecessities((prevEditedNecessities) => {
       const updatedEditedNecessities = { ...prevEditedNecessities };
       updatedEditedNecessities[selectedLanguage?.id] = necessityInputValues[selectedLanguage?.id];
       return updatedEditedNecessities;
     });
-  
+
     setSelectedLanguage(newLanguage);
-  
+
     const descriptionObj = updatedGame.descriptions?.find(
       (description) => description.language_id === newLanguageId
     );
-  
+
     const newEditorState = createEditorStateFromDescription(
       descriptionObj ? descriptionObj.description : null
     );
     setEditorState(newEditorState);
   };
-  
+
 
   const handleEditorStateChange = (newEditorState) => {
     const contentState = newEditorState.getCurrentContent();
     const rawContent = convertToRaw(contentState);
     const description = JSON.stringify(rawContent);
-  
+
     const updatedDescriptions = updatedGame.descriptions.filter(
       (description) => description.language_id !== selectedLanguage.id
     );
@@ -189,7 +189,7 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
         return Object.entries(necessityInputValues).flatMap(([languageId, values]) => {
           const value = values[inputIndex];
           if (!value) return [];
-      
+
           const originalNecessity = game.necessities.find(
             (necessity) => necessity.language_id === parseInt(languageId, 10) && necessity.necessity_name === value
           );
@@ -202,7 +202,7 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
           };
         });
       });
-      
+
       // Convert descriptions to HTML
       gameToSave.descriptions = gameToSave.descriptions.map((descriptionObj) => {
         let htmlDescription;
@@ -222,8 +222,8 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
       if (uploadedImage) {
         formData.append('image', uploadedImage);
       }
-      
-      formData.append('game_data', JSON.stringify(gameToSave)); 
+
+      formData.append('game_data', JSON.stringify(gameToSave));
 
       await axios.put(`${config.API_BASE_URL}/api/games/${game.id}`, formData, {
         headers: {
@@ -244,154 +244,156 @@ const EditGameModal = ({ game, onUpdate, authToken, languages, categories }) => 
         <FontAwesomeIcon icon={faEdit} />
       </button>
       <Modal isOpen={isModalOpen} onRequestClose={toggleModal} contentLabel="Edit Game Modal">
-      <label>{t('CreateGameModal.language')}</label>
-      <select
-        value={selectedLanguage && selectedLanguage.id}
-        onChange={handleLanguageChange}
-      >
-        {languages.map((language) => (
-          <option key={language.id} value={language.id}>
-            {language.name}
-          </option>
-        ))}
-      </select>
-      {/* Game Title */}
-      <div>
-          <label>{t('CreateGameModal.gameTitle')}</label>
-          <input
-            type="text"
-            value={
-              updatedGame.translations?.find(
-                (translation) => translation.language_id === selectedLanguage.id
-              )?.name || ''
-            }
-            onChange={(e) => {
-              const updatedTranslations = updatedGame.translations?.filter(
-                (translation) => translation.language_id !== selectedLanguage.id
-              );
-              setUpdatedGame({
-                ...updatedGame,
-                translations: [
-                  ...updatedTranslations,
-                  { language_id: selectedLanguage.id, name: e.target.value },
-                ],
-              });
-            }}
-          />
-        </div>
-        {/* Alias */}
-        <div>
-          <label>{t('CreateGameModal.alias')}</label>
-          <input
-            type="text"
-            value={
-              updatedGame.aliases.find(
-                (alias) => alias.language_id === selectedLanguage.id
-              )?.alias || ''
-            }
-            onChange={(e) => {
-              const updatedAliases = updatedGame.aliases.filter(
-                (alias) => alias.language_id !== selectedLanguage.id
-              );
-              setUpdatedGame({
-                ...updatedGame,
-                aliases: [
-                  ...updatedAliases,
-                  { language_id: selectedLanguage.id, alias: e.target.value },
-                ],
-              });
-            }}
-          />
-        </div>
-        <div>
-          <label>{t('CreateGameModal.category')}</label>
+        <div className="edit-game-modal-yes">
+          <label>{t('CreateGameModal.language')}</label>
           <select
-            value={updatedGame.category_id}
-            onChange={(e) =>
-              setUpdatedGame({ ...updatedGame, category_id: parseInt(e.target.value) })
-            }
+            value={selectedLanguage && selectedLanguage.id}
+            onChange={handleLanguageChange}
           >
-            {categories.map((category) => {
-              // Find the translation for the category name in the selected language
-              const categoryNameTranslation = category.translations.find(
-                (translation) => translation.language_id === selectedLanguage.id
-              )?.name;
-
-              return (
-                <option key={category.id} value={category.id}>
-                  {categoryNameTranslation || category.name}
-                </option>
-              );
-            })}
+            {languages.map((language) => (
+              <option key={language.id} value={language.id}>
+                {language.name}
+              </option>
+            ))}
           </select>
+          {/* Game Title */}
+          <div>
+            <label>{t('CreateGameModal.gameTitle')}</label>
+            <input
+              type="text"
+              value={
+                updatedGame.translations?.find(
+                  (translation) => translation.language_id === selectedLanguage.id
+                )?.name || ''
+              }
+              onChange={(e) => {
+                const updatedTranslations = updatedGame.translations?.filter(
+                  (translation) => translation.language_id !== selectedLanguage.id
+                );
+                setUpdatedGame({
+                  ...updatedGame,
+                  translations: [
+                    ...updatedTranslations,
+                    { language_id: selectedLanguage.id, name: e.target.value },
+                  ],
+                });
+              }}
+            />
+          </div>
+          {/* Alias */}
+          <div>
+            <label>{t('CreateGameModal.alias')}</label>
+            <input
+              type="text"
+              value={
+                updatedGame.aliases.find(
+                  (alias) => alias.language_id === selectedLanguage.id
+                )?.alias || ''
+              }
+              onChange={(e) => {
+                const updatedAliases = updatedGame.aliases.filter(
+                  (alias) => alias.language_id !== selectedLanguage.id
+                );
+                setUpdatedGame({
+                  ...updatedGame,
+                  aliases: [
+                    ...updatedAliases,
+                    { language_id: selectedLanguage.id, alias: e.target.value },
+                  ],
+                });
+              }}
+            />
+          </div>
+          <div>
+            <label>{t('CreateGameModal.category')}</label>
+            <select
+              value={updatedGame.category_id}
+              onChange={(e) =>
+                setUpdatedGame({ ...updatedGame, category_id: parseInt(e.target.value) })
+              }
+            >
+              {categories.map((category) => {
+                // Find the translation for the category name in the selected language
+                const categoryNameTranslation = category.translations.find(
+                  (translation) => translation.language_id === selectedLanguage.id
+                )?.name;
+
+                return (
+                  <option key={category.id} value={category.id}>
+                    {categoryNameTranslation || category.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div>
+            <label>{t('CreateGameModal.playerCount')}</label>
+            <input
+              type="number"
+              value={updatedGame.player_count}
+              onChange={(e) =>
+                setUpdatedGame({ ...updatedGame, player_count: parseInt(e.target.value) })}
+            />
+          </div>
+          <div>
+            <label>{t('CreateGameModal.image')}</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+            {imagePreviewUrl && (
+              <div>
+                <img src={imagePreviewUrl} alt="Uploaded game" style={{ width: '359.99px', height: '202.49px' }} />
+              </div>
+            )}
+          </div>
+          {/* Necessities */}
+          <div>
+            <label>{t('CreateGameModal.necessities')}</label>
+            {necessityInputs.map((inputIndex) => (
+              <div key={inputIndex}>
+                <input
+                  type="text"
+                  value={necessityInputValues[selectedLanguage.id]?.[inputIndex] || ''}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    setNecessityInputValues((prevValues) => {
+                      const updatedValues = { ...prevValues };
+                      if (!updatedValues[selectedLanguage.id]) {
+                        updatedValues[selectedLanguage.id] = [];
+                      }
+                      updatedValues[selectedLanguage.id][inputIndex] = newValue;
+                      return updatedValues;
+                    });
+                  }}
+
+                />
+                <button onClick={() => removeNecessityInput(inputIndex)}>
+                  {t('CreateGameModal.removeNecessityButton')}
+                </button>
+              </div>
+            ))}
+            <button onClick={addNecessityInput}>{t('CreateGameModal.addNecessityButton')}</button>
+          </div>
+          {/* Description */}
+          <div>
+            <label>{t('CreateGameModal.description')}</label>
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={handleEditorStateChange}
+              toolbar={{
+                options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
+                // Customize the toolbar options as needed
+              }}
+            />
+          </div>
+          <button onClick={handleUpdateGame}>{t('EditGameModal.updateGameButton')}</button>
+          <button onClick={toggleModal}>{t('EditGameModal.cancelButton')}</button>
         </div>
-        <div>
-          <label>{t('CreateGameModal.playerCount')}</label>
-          <input
-            type="number"
-            value={updatedGame.player_count}
-            onChange={(e) =>
-              setUpdatedGame({ ...updatedGame, player_count: parseInt(e.target.value) })}
-          />
-        </div>
-        <div>
-          <label>{t('CreateGameModal.image')}</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-          {imagePreviewUrl && (
-            <div>
-              <img src={imagePreviewUrl} alt="Uploaded game" style={{ width: '359.99px', height: '202.49px' }} />
-            </div>
-          )}
-        </div>
-        {/* Necessities */}
-        <div>
-          <label>{t('CreateGameModal.necessities')}</label>
-          {necessityInputs.map((inputIndex) => (
-            <div key={inputIndex}>
-              <input
-                type="text"
-                value={necessityInputValues[selectedLanguage.id]?.[inputIndex] || ''}
-                onChange={(e) => {
-                  const newValue = e.target.value;
-                  setNecessityInputValues((prevValues) => {
-                    const updatedValues = { ...prevValues };
-                    if (!updatedValues[selectedLanguage.id]) {
-                      updatedValues[selectedLanguage.id] = [];
-                    }
-                    updatedValues[selectedLanguage.id][inputIndex] = newValue;
-                    return updatedValues;
-                  });
-                }}
-                
-              />
-              <button onClick={() => removeNecessityInput(inputIndex)}>
-                {t('CreateGameModal.removeNecessityButton')}
-              </button>
-            </div>
-          ))}
-          <button onClick={addNecessityInput}>{t('CreateGameModal.addNecessityButton')}</button>
-        </div>
-        {/* Description */}
-        <div>
-          <label>{t('CreateGameModal.description')}</label>
-          <Editor
-            editorState={editorState}
-            onEditorStateChange={handleEditorStateChange}
-            toolbar={{
-              options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
-              // Customize the toolbar options as needed
-            }}
-          />
-        </div>
-        <button onClick={handleUpdateGame}>{t('EditGameModal.updateGameButton')}</button>
-        <button onClick={toggleModal}>{t('EditGameModal.cancelButton')}</button>
-</Modal>
-</>
-);
+      </Modal>
+    </>
+  );
 };
 
 export default EditGameModal;
