@@ -33,3 +33,57 @@
     padding-bottom: 1rem;
   }
 }
+
+.notification-popup {
+  display: flex; // sets the display mode to flex
+  flex-direction: column; // arranges child elements (the p and button) vertically
+  justify-content: center; // centers the content vertically
+  align-items: center; // centers the content horizontally
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  background-color: $light-purple;
+  color: $white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;  
+  max-width: 80%;  
+  text-align: center; 
+  line-height: 1.5; 
+
+  p {
+    margin-bottom: 20px; 
+  }
+
+  button {
+    padding: 12px 24px;
+    background-color: $dark-purple;
+    color: $white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+
+    &:hover {
+      background-color: $hover-color;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .notification-popup {
+    padding: 20px; // reduce padding on mobile for more space
+    max-width: 100%; // allow the notification to be a bit wider on mobile screens
+  }
+}
+
+
+

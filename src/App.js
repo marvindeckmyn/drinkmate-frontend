@@ -17,6 +17,7 @@ import GameDetails from './components/GameDetails';
 import Header from './components/Header';
 import DiceRoller from './components/DiceRoller';
 import './scss/main.scss';
+import { useTranslation } from 'react-i18next';
 
 function App({ router: Router = BrowserRouter}) {
   const initialToken = localStorage.getItem('authToken') || '';
@@ -25,6 +26,30 @@ function App({ router: Router = BrowserRouter}) {
   const [authToken, setAuthToken] = useState(initialToken);
   const [isAdmin, setIsAdmin] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
+  const [showNotification, setShowNotification] = useState(false);
+  const { t } = useTranslation();
+
+  //tijdelijke notificatie bitch
+
+  useEffect(() => {
+    if (!localStorage.getItem('notificationShown')) {
+      setShowNotification(true);
+    }
+  }, []);
+
+  const handleNotificationClose = () => {
+    localStorage.setItem('notificationShown', 'true');
+    setShowNotification(false);
+};
+
+useEffect(() => {
+  const expiryDate = new Date('2023-08-27');
+  const currentDate = new Date();
+  
+  if (currentDate < expiryDate && !localStorage.getItem('notificationShown')) {
+      setShowNotification(true);
+  }
+}, []);
 
   const handleLogin = useCallback((userId, isAdmin) => {
     setCurrentUserId(userId);
@@ -78,6 +103,14 @@ function App({ router: Router = BrowserRouter}) {
           <Header />
           <Sidebar isAdmin={isAdmin} isLoggedIn={!!authToken} handleLogout={handleLogout} />
           {error && <div className="error-message">{error}</div>}
+          {
+              showNotification && (
+                  <div className="notification-popup">
+                       <p>{t('Notification.message')}</p>
+                      <button onClick={handleNotificationClose}>OK</button>
+                  </div>
+              )
+          }
           <Routes>
             <Route path="/" element={<GameList />} />
             <Route path="/games" element={<GameList />} />
@@ -97,6 +130,14 @@ function App({ router: Router = BrowserRouter}) {
           <Header />
           <Sidebar isAdmin={isAdmin} isLoggedIn={!!authToken} handleLogout={handleLogout} />
           {error && <div className="error-message">{error}</div>}
+          {
+              showNotification && (
+                  <div className="notification-popup">
+                      <p>{t('Notification.message')}</p>
+                      <button onClick={handleNotificationClose}>OK</button>
+                  </div>
+              )
+          }
           <Routes>
             <Route path="/" element={<GameList />} />
             <Route path="/games" element={<GameList />} />

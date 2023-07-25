@@ -1,4 +1,7 @@
 {
+  "Notification": {
+    "message": "Drankspelletjes.be a déménagé! Nous sommes officiellement devenus DrinkMate. Dès maintenant, nous vous offrons une expérience multilingue avec de nouvelles fonctionnalités à venir, telles que l'application officielle DrinkMate (iOS/Android), des jeux jouables sur l'application que vous pouvez jouer avec vos amis, et un mode gueule de bois!"
+  },
   "GameList": {
     "title": "Jeux à boire",
     "minPlayers": "joueurs",

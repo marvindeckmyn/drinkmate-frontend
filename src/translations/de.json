@@ -1,4 +1,7 @@
 {
+  "Notification": {
+    "message": "Drankspelletjes.be ist umgezogen! Wir sind offiziell zu DrinkMate geworden. Ab jetzt bieten wir Ihnen ein mehrsprachiges Erlebnis mit neuen kommenden Features wie der offiziellen DrinkMate App (iOS/Android), spielbaren Spielen in der App, die Sie mit Ihren Freunden spielen können, und einem Kater-Modus!"
+  },
   "GameList": {
     "title": "Trinkspiele",
     "minPlayers": "Spieler",

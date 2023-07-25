@@ -1,4 +1,7 @@
 {
+  "Notification": {
+    "message": "¡Drankspelletjes.be se ha mudado! Hemos pasado a ser oficialmente DrinkMate. ¡Desde ahora, te ofrecemos una experiencia multilingüe con nuevas características que vienen, como la app oficial de DrinkMate (iOS/Android), juegos jugables en la app que puedes jugar con tus amigos, y modo resaca!"
+  },
   "GameList": {
     "title": "Juegos de beber",
     "minPlayers": "jugadores",

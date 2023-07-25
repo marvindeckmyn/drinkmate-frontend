@@ -1,4 +1,7 @@
 {
+  "Notification": {
+    "message": "Drankspelletjes.be has moved! We have officially become DrinkMate. Starting now, we offer you a multilingual experience with incoming features such as the official DrinkMate app (iOS/Android), playable games on the app that you can play with your mates, and hangover mode!"
+  },
   "GameList": {
     "title": "Drinking Games",
     "minPlayers": "players",

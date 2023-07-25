@@ -1,4 +1,7 @@
 {
+  "Notification": {
+    "message": "Drankspelletjes.be is verhuisd! We zijn officieel DrinkMate geworden. Voortaan bieden we je een meertalige ervaring aan met nieuwe aanstaande features zoals de officiële DrinkMate-app (iOS/Android), speelbare spellen op de app die je samen met je maten kunt spelen, en natuurlijk katermodus!"
+  },
   "GameList": {
     "title": "Drankspelletjes",
     "minPlayers": "spelers",

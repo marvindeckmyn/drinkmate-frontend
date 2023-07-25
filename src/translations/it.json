@@ -1,4 +1,7 @@
 {
+  "Notification": {
+    "message": "Drankspelletjes.be si è trasferito! Siamo ufficialmente diventati DrinkMate. Da ora, ti offriamo un'esperienza multilingua con nuove funzionalità in arrivo, come l'app ufficiale DrinkMate (iOS/Android), giochi giocabili sull'app che puoi giocare con i tuoi amici, e modalità post-sbornia!"
+  },
   "GameList": {
     "title": "Giochi di bevute",
     "minPlayers": "giocatori",
