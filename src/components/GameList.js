@@ -35,7 +35,9 @@ const GameList = () => {
 
   const handleSearchInputChange = (event) => {
     setSearch(event.target.value);
-  };
+    setGames([]); // clear games
+    setCurrentPage(1); // reset page number when search changes
+};
 
   const handleCategoryChange = (categoryId, isChecked) => {
     const updatedCategories = new Set(selectedCategories);
@@ -58,30 +60,21 @@ const GameList = () => {
 
 
   const filteredGames = useCallback(() => {
-    const lowerCaseSearch = search.toLowerCase();
-
     let filtered = games.filter((game) => {
-      const translatedName = getTranslatedName(game.translations, game.name).toLowerCase();
-      const gameAlias = game.alias ? game.alias.toLowerCase() : '';
       const categoryMatches = selectedCategories.size === 0 || selectedCategories.has(game.category_id);
       const playerCountMatches = (!minPlayerCount || game.player_count >= minPlayerCount) && (!maxPlayerCount || game.player_count <= maxPlayerCount);
-
-      return (
-        (translatedName.includes(lowerCaseSearch) || gameAlias.includes(lowerCaseSearch)) &&
-        categoryMatches &&
-        playerCountMatches
-      );
+      return categoryMatches && playerCountMatches;
     });
 
     filtered.sort((a, b) => b.click_count - a.click_count);
 
     return filtered;
 
-  }, [search, games, getTranslatedName, selectedCategories, minPlayerCount, maxPlayerCount]);
+  }, [games, selectedCategories, minPlayerCount, maxPlayerCount]);
 
   const fetchGames = useCallback(async (page = 1) => {
     try {
-        const response = await axios.get(`${config.API_BASE_URL}/api/games?page=${page}&limit=${LIMIT}`);
+        const response = await axios.get(`${config.API_BASE_URL}/api/games?page=${page}&limit=${LIMIT}&search=${search}`);
         const fetchedGames = response.data.games;
         const minCount = Math.min(...fetchedGames.map((game) => game.player_count));
         const maxCount = Math.max(...fetchedGames.map((game) => game.player_count));
@@ -96,18 +89,16 @@ const GameList = () => {
         setMinAvailablePlayerCount(minCount);
         setMaxAvailablePlayerCount(maxCount);
 
-        // Add scroll restoration logic here
         if (!hasRestoredPosition && document.documentElement.offsetHeight >= scrollPosition) {
             window.scrollTo(0, scrollPosition);
-            setHasRestoredPosition(true); // ensure this only triggers once
+            setHasRestoredPosition(true);
         } else if (!hasRestoredPosition && hasMoreGames) {
-            // If we haven't restored the position and there are more games, fetch the next page
             fetchGames(page + 1);
         }
     } catch (err) {
         console.error(err);
     }
-}, [hasMoreGames, scrollPosition, hasRestoredPosition]);
+}, [hasMoreGames, scrollPosition, hasRestoredPosition, search]); 
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -145,26 +136,28 @@ const GameList = () => {
     };
   }  
 
+  // Existing useEffect for scroll
   useEffect(() => {
     const checkScrollPosition = throttle(() => {
       if (
         window.innerHeight + document.documentElement.scrollTop
-        >= document.documentElement.offsetHeight - 10 && hasMoreGames
+        >= document.documentElement.offsetHeight - 10 && hasMoreGames && search === ''
       ) {
-        setCurrentPage(prevPage => prevPage + 1);
+        setCurrentPage(prevPage => prevPage + 1); // this line updates currentPage
       }
-    }, 100); 
+    }, 100);
 
     window.addEventListener('scroll', checkScrollPosition);
 
     return () => {
       window.removeEventListener('scroll', checkScrollPosition);
     };
-  }, [hasMoreGames]);
+  }, [hasMoreGames, search]);
 
+  // Modify your useEffect to listen for currentPage changes and fetch accordingly
   useEffect(() => {
     fetchGames(currentPage);
-  }, [currentPage, fetchGames, language]);
+  }, [fetchGames, search, currentPage]);
 
   return (
     <><Helmet>
