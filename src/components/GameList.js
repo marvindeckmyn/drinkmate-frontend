@@ -21,6 +21,9 @@ const GameList = () => {
   const [minAvailablePlayerCount, setMinAvailablePlayerCount] = useState(1);
   const [maxAvailablePlayerCount, setMaxAvailablePlayerCount] = useState(20);
   const [showFilters, setShowFilters] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMoreGames, setHasMoreGames] = useState(true);
+  const LIMIT = 9; // Number of games per page
   const sliderWidth = 100;
   const minLabelPosition = (minPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth;
   const maxLabelPosition = (maxPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth;
@@ -71,21 +74,30 @@ const GameList = () => {
 
   }, [search, games, getTranslatedName, selectedCategories, minPlayerCount, maxPlayerCount]);
 
+  const fetchGames = async (page = 1) => {
+    try {
+      const response = await axios.get(`${config.API_BASE_URL}/api/games?page=${page}&limit=${LIMIT}`);
+      const fetchedGames = response.data.games;
+      const minCount = Math.min(...fetchedGames.map((game) => game.player_count));
+      const maxCount = Math.max(...fetchedGames.map((game) => game.player_count));
+
+
+      setHasMoreGames(response.data.hasMoreGames);
+      setGames(prevGames => {
+        const uniqueGames = [...prevGames, ...fetchedGames].filter(
+          (game, index, self) => index === self.findIndex(g => g.id === game.id)
+        );
+        return uniqueGames;
+      });
+
+      setMinAvailablePlayerCount(minCount);
+      setMaxAvailablePlayerCount(maxCount);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const response = await axios.get(`${config.API_BASE_URL}/api/games`);
-        const minCount = Math.min(...response.data.map((game) => game.player_count));
-        const maxCount = Math.max(...response.data.map((game) => game.player_count));
-
-        setGames(response.data);
-        setMinAvailablePlayerCount(minCount);
-        setMaxAvailablePlayerCount(maxCount);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
     const fetchCategories = async () => {
       try {
         const response = await axios.get(`${config.API_BASE_URL}/api/categories`);
@@ -110,6 +122,37 @@ const GameList = () => {
       i18n.off('languageChanged', handleLanguageChange);
     };
   }, [i18n]);
+
+  function throttle(fn, wait) {
+    let lastFn = 0;
+    return function (...args) {
+      const current = new Date().getTime();
+      if (current - lastFn < wait) return;
+      lastFn = current;
+      return fn(...args);
+    };
+  }  
+
+  useEffect(() => {
+    const checkScrollPosition = throttle(() => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop
+        >= document.documentElement.offsetHeight - 10 && hasMoreGames
+      ) {
+        setCurrentPage(prevPage => prevPage + 1);
+      }
+    }, 100); 
+
+    window.addEventListener('scroll', checkScrollPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkScrollPosition);
+    };
+  }, [hasMoreGames]);
+
+  useEffect(() => {
+    fetchGames(currentPage);
+  }, [currentPage, language]);
 
   return (
     <><Helmet>
