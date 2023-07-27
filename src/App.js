@@ -141,7 +141,7 @@ useEffect(() => {
           <Routes>
             <Route path="/" element={<GameList />} />
             <Route path="/games" element={<GameList />} />
-            <Route path="/games/:id" element={<GameDetails />} />
+            <Route path="/games/:id" element={<GameDetails authToken={authToken} />} />
             {isAdmin && (
               <Route path="/admin" element={<AdminDashboard />}>
                 <Route path="general" element={<AdminGeneral authToken={authToken} currentUserId={currentUserId} />} />

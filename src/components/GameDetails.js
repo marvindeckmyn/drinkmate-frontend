@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import parse from 'html-react-parser';
 import { Helmet } from 'react-helmet';
 
-const GameDetails = () => {
+const GameDetails = ({ authToken }) => {
   const [game, setGame] = useState(null);
   const { id } = useParams();
   const { t, i18n } = useTranslation();
@@ -15,7 +15,12 @@ const GameDetails = () => {
   useEffect(() => {
     const fetchGame = async () => {
       try {
-        const response = await axios.get(`${config.API_BASE_URL}/api/games/${id}`);
+        const response = await axios.get(`${config.API_BASE_URL}/api/games/${id}`, {
+          headers: {
+            'x-auth-token': authToken,
+          },
+        });
+
         setGame(response.data);
       } catch (err) {
         console.error(err);
@@ -32,7 +37,7 @@ const GameDetails = () => {
     }
     updateClickCount();
 
-  }, [id]);
+  }, [authToken, id]);
 
   const getTranslatedName = (translations, defaultValue) => {
     if (translations && translations.length > 0) {
