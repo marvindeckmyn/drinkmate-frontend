@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import config from '../config';
@@ -10,15 +10,6 @@ const GameDetails = () => {
   const [game, setGame] = useState(null);
   const { id } = useParams();
   const { t, i18n } = useTranslation();
-
-  const getTranslatedName = useCallback((translations, defaultValue) => {
-    if (translations && translations.length > 0) {
-      const languageCode = i18n.language;
-      const translation = translations.find((t) => t.code === languageCode);
-      return translation ? translation.name : defaultValue;
-    }
-    return defaultValue;
-  }, [i18n.language]);
 
   useEffect(() => {
     const updateClickCount = async () => {
@@ -42,11 +33,10 @@ const GameDetails = () => {
       try {
         // Get the user's location
         const geoResponse = await axios.get('https://api.ipgeolocation.io/ipgeo?apiKey=1c9c9eb3cd264563b16f8d3fdc441567');
-
         const { city, country_name } = geoResponse.data;
     
         // Create the message
-        const content = `Someone from ${city}, ${country_name} is watching ${getTranslatedName(game.translations, game.name)}`;
+        const content = `Someone from ${city}, ${country_name} is watching ${game.name}`;
     
         // Send to Discord via Webhook
         await axios.post('https://discord.com/api/webhooks/1134221696488984688/cTOMLi6fSyzw7mgXiCXpeicRjyLdHWU_51ohnL8dR5XNmIFKq7lDlbQp12I6kDdPTmx8', { content });
@@ -59,7 +49,16 @@ const GameDetails = () => {
     fetchGame();
     updateClickCount();
     sendDiscordNotification();
-  }, [game.name, game.translations, getTranslatedName, id]);
+  }, [id]);
+
+  const getTranslatedName = (translations, defaultValue) => {
+    if (translations && translations.length > 0) {
+      const languageCode = i18n.language;
+      const translation = translations.find((t) => t.code === languageCode);
+      return translation ? translation.name : defaultValue;
+    }
+    return defaultValue;
+  };
 
   if (!game) {
     return <div>{t('GameDetails.loading')}...</div>;
