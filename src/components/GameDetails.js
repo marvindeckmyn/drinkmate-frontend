@@ -11,15 +11,8 @@ const GameDetails = () => {
   const { id } = useParams();
   const { t, i18n } = useTranslation();
 
+  // This useEffect fetches game data when the component mounts or the id changes
   useEffect(() => {
-    const updateClickCount = async () => {
-      try {
-        await axios.put(`${config.API_BASE_URL}/api/games/${id}/click`);
-      } catch (err) {
-        console.error("Error updating click count: ", err);
-      }
-    }
-
     const fetchGame = async () => {
       try {
         const response = await axios.get(`${config.API_BASE_URL}/api/games/${id}`);
@@ -28,28 +21,37 @@ const GameDetails = () => {
         console.error(err);
       }
     };
+    fetchGame();
+
+    const updateClickCount = async () => {
+      try {
+        await axios.put(`${config.API_BASE_URL}/api/games/${id}/click`);
+      } catch (err) {
+        console.error("Error updating click count: ", err);
+      }
+    }
+    updateClickCount();
+
+  }, [id]);
+
+  // This useEffect sends the Discord notification when the game data is set
+  useEffect(() => {
+    if (!game) return;  // Don't run if game data is not available
 
     const sendDiscordNotification = async () => {
       try {
-        // Get the user's location
         const geoResponse = await axios.get('https://api.ipgeolocation.io/ipgeo?apiKey=1c9c9eb3cd264563b16f8d3fdc441567');
         const { city, country_name } = geoResponse.data;
-    
-        // Create the message
         const content = `Someone from ${city}, ${country_name} is watching ${game.name}`;
-    
-        // Send to Discord via Webhook
         await axios.post('https://discord.com/api/webhooks/1134221696488984688/cTOMLi6fSyzw7mgXiCXpeicRjyLdHWU_51ohnL8dR5XNmIFKq7lDlbQp12I6kDdPTmx8', { content });
       } catch (error) {
         console.error('Error sending Discord notification:', error);
       }
     };
-    
 
-    fetchGame();
-    updateClickCount();
     sendDiscordNotification();
-  }, [id]);
+
+  }, [game]);
 
   const getTranslatedName = (translations, defaultValue) => {
     if (translations && translations.length > 0) {
