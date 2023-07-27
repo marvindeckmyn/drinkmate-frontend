@@ -80,7 +80,7 @@ const GameDetails = () => {
       <meta property="og:description" content={parse(getTranslatedDescription(game.descriptions, game.description))} />
       <meta property="og:image" content={`${config.API_BASE_URL}/${game.image}`} />
       <meta property="og:url" content={window.location.href} />
-      <link rel="canonical" href={window.location.href} />
+      <link rel="alternate" hreflang={i18n.language} href={window.location.href} />
       <html lang={i18n.language} />
     </Helmet><div className="main">
         <div className="game-more-details">
