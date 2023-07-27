@@ -146,3 +146,18 @@
     display: block;
   }
 }
+
+/* Default styles for mobile */
+.logo {
+  display: none;
+  border-radius: 500px;
+}
+
+/* Styles for PC */
+@media (min-width: 768px) {
+  .logo {
+    display: block;
+    max-width: 100px;
+    height: auto;
+  }
+}
