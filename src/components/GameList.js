@@ -26,7 +26,7 @@ const GameList = () => {
   const [hasMoreGames, setHasMoreGames] = useState(true);
   const [scrollPosition, setScrollPosition] = useScrollPosition();
   const [hasRestoredPosition, setHasRestoredPosition] = useState(false);
-  const LIMIT = 9; // Number of games per page
+  const LIMIT = 18; // Number of games per page
   const sliderWidth = 100;
   const minLabelPosition = minPlayerCount 
   ? (minPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth 
