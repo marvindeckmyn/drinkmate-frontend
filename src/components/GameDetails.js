@@ -34,25 +34,6 @@ const GameDetails = () => {
 
   }, [id]);
 
-  // This useEffect sends the Discord notification when the game data is set
-  useEffect(() => {
-    if (!game) return;  // Don't run if game data is not available
-
-    const sendDiscordNotification = async () => {
-      try {
-        const geoResponse = await axios.get('https://api.ipgeolocation.io/ipgeo?apiKey=1c9c9eb3cd264563b16f8d3fdc441567');
-        const { city, country_name } = geoResponse.data;
-        const content = `Someone from ${city}, ${country_name} is watching ${game.name}`;
-        await axios.post('https://discord.com/api/webhooks/1134221696488984688/cTOMLi6fSyzw7mgXiCXpeicRjyLdHWU_51ohnL8dR5XNmIFKq7lDlbQp12I6kDdPTmx8', { content });
-      } catch (error) {
-        console.error('Error sending Discord notification:', error);
-      }
-    };
-
-    sendDiscordNotification();
-
-  }, [game]);
-
   const getTranslatedName = (translations, defaultValue) => {
     if (translations && translations.length > 0) {
       const languageCode = i18n.language;
