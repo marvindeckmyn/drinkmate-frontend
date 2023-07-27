@@ -29,7 +29,9 @@ const GameList = () => {
   const LIMIT = 9; // Number of games per page
   const sliderWidth = 100;
   const minLabelPosition = (minPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth;
-  const maxLabelPosition = (maxPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth;
+  const maxLabelPosition = maxPlayerCount ? 
+  (maxPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth :
+  sliderWidth;
 
   const handleSearchInputChange = (event) => {
     setSearch(event.target.value);
