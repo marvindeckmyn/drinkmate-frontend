@@ -77,7 +77,7 @@ const GameList = () => {
 
   }, [search, games, getTranslatedName, selectedCategories, minPlayerCount, maxPlayerCount]);
 
-  const fetchGames = async (page = 1) => {
+  const fetchGames = useCallback(async (page = 1) => {
     try {
         const response = await axios.get(`${config.API_BASE_URL}/api/games?page=${page}&limit=${LIMIT}`);
         const fetchedGames = response.data.games;
@@ -105,7 +105,7 @@ const GameList = () => {
     } catch (err) {
         console.error(err);
     }
-};
+}, [hasMoreGames, scrollPosition, hasRestoredPosition]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -119,7 +119,7 @@ const GameList = () => {
 
     fetchGames();
     fetchCategories();
-  }, [language, scrollPosition]);
+  }, [fetchGames, language, scrollPosition]);
 
   useEffect(() => {
     const handleLanguageChange = () => {
@@ -162,7 +162,7 @@ const GameList = () => {
 
   useEffect(() => {
     fetchGames(currentPage);
-  }, [currentPage, language]);
+  }, [currentPage, fetchGames, language]);
 
   return (
     <><Helmet>
