@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import config from '../config';
@@ -10,6 +10,15 @@ const GameDetails = () => {
   const [game, setGame] = useState(null);
   const { id } = useParams();
   const { t, i18n } = useTranslation();
+
+  const getTranslatedName = useCallback((translations, defaultValue) => {
+    if (translations && translations.length > 0) {
+      const languageCode = i18n.language;
+      const translation = translations.find((t) => t.code === languageCode);
+      return translation ? translation.name : defaultValue;
+    }
+    return defaultValue;
+  }, [i18n.language]);
 
   useEffect(() => {
     const updateClickCount = async () => {
@@ -50,16 +59,7 @@ const GameDetails = () => {
     fetchGame();
     updateClickCount();
     sendDiscordNotification();
-  }, [id]);
-
-  const getTranslatedName = (translations, defaultValue) => {
-    if (translations && translations.length > 0) {
-      const languageCode = i18n.language;
-      const translation = translations.find((t) => t.code === languageCode);
-      return translation ? translation.name : defaultValue;
-    }
-    return defaultValue;
-  };
+  }, [game.name, game.translations, getTranslatedName, id]);
 
   if (!game) {
     return <div>{t('GameDetails.loading')}...</div>;
