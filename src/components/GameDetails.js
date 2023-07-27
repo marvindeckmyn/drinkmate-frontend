@@ -12,6 +12,14 @@ const GameDetails = () => {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
+    const updateClickCount = async () => {
+      try {
+        await axios.put(`${config.API_BASE_URL}/api/games/${id}/click`);
+      } catch (err) {
+        console.error("Error updating click count: ", err);
+      }
+    }
+
     const fetchGame = async () => {
       try {
         const response = await axios.get(`${config.API_BASE_URL}/api/games/${id}`);
@@ -22,6 +30,7 @@ const GameDetails = () => {
     };
 
     fetchGame();
+    updateClickCount();
   }, [id]);
 
   const getTranslatedName = (translations, defaultValue) => {

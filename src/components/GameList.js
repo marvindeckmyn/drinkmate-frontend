@@ -47,7 +47,7 @@ const GameList = () => {
     }
     return defaultValue;
   }, [i18n.language]);
-  
+
 
   const filteredGames = useCallback(() => {
     const lowerCaseSearch = search.toLowerCase();
@@ -65,25 +65,11 @@ const GameList = () => {
       );
     });
 
-    const newGames = filtered.filter(game => game.new);
-    const otherGames = filtered.filter(game => !game.new);
+    filtered.sort((a, b) => b.click_count - a.click_count);
 
-    function shuffle(array) {
-      let currentIndex = array.length, temporaryValue, randomIndex;
-      while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
-      return array;
-    }
+    return filtered;
 
-    return newGames.concat(shuffle(otherGames));
-    
   }, [search, games, getTranslatedName, selectedCategories, minPlayerCount, maxPlayerCount]);
-  
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -182,7 +168,7 @@ const GameList = () => {
                       onChange={(value) => {
                         setMinPlayerCount(value[0]);
                         setMaxPlayerCount(value[1]);
-                      } }
+                      }}
                       allowCross={false} />
                   </div>
                 </div>
