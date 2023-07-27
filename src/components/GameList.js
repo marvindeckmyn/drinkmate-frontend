@@ -28,9 +28,9 @@ const GameList = () => {
   const [hasRestoredPosition, setHasRestoredPosition] = useState(false);
   const LIMIT = 9; // Number of games per page
   const sliderWidth = 100;
-  const minLabelPosition = minPlayerCount === minAvailablePlayerCount 
-  ? 0 
-  : (minPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth;
+  const minLabelPosition = minPlayerCount 
+  ? (minPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth 
+  : 0;
   const maxLabelPosition = maxPlayerCount ? 
   (maxPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth :
   sliderWidth;
