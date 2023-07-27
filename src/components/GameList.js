@@ -8,6 +8,7 @@ import Slider from 'rc-slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import { Helmet } from "react-helmet";
+import { useScrollPosition } from '../contexts/ScrollPositionProvider';
 
 const GameList = () => {
   const [games, setGames] = useState([]);
@@ -23,6 +24,8 @@ const GameList = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMoreGames, setHasMoreGames] = useState(true);
+  const [scrollPosition, setScrollPosition] = useScrollPosition();
+  const [hasRestoredPosition, setHasRestoredPosition] = useState(false);
   const LIMIT = 9; // Number of games per page
   const sliderWidth = 100;
   const minLabelPosition = (minPlayerCount - minAvailablePlayerCount) / (maxAvailablePlayerCount - minAvailablePlayerCount) * sliderWidth;
@@ -76,26 +79,33 @@ const GameList = () => {
 
   const fetchGames = async (page = 1) => {
     try {
-      const response = await axios.get(`${config.API_BASE_URL}/api/games?page=${page}&limit=${LIMIT}`);
-      const fetchedGames = response.data.games;
-      const minCount = Math.min(...fetchedGames.map((game) => game.player_count));
-      const maxCount = Math.max(...fetchedGames.map((game) => game.player_count));
+        const response = await axios.get(`${config.API_BASE_URL}/api/games?page=${page}&limit=${LIMIT}`);
+        const fetchedGames = response.data.games;
+        const minCount = Math.min(...fetchedGames.map((game) => game.player_count));
+        const maxCount = Math.max(...fetchedGames.map((game) => game.player_count));
 
+        setHasMoreGames(response.data.hasMoreGames);
+        setGames(prevGames => {
+            const uniqueGames = [...prevGames, ...fetchedGames].filter(
+                (game, index, self) => index === self.findIndex(g => g.id === game.id)
+            );
+            return uniqueGames;
+        });
+        setMinAvailablePlayerCount(minCount);
+        setMaxAvailablePlayerCount(maxCount);
 
-      setHasMoreGames(response.data.hasMoreGames);
-      setGames(prevGames => {
-        const uniqueGames = [...prevGames, ...fetchedGames].filter(
-          (game, index, self) => index === self.findIndex(g => g.id === game.id)
-        );
-        return uniqueGames;
-      });
-
-      setMinAvailablePlayerCount(minCount);
-      setMaxAvailablePlayerCount(maxCount);
+        // Add scroll restoration logic here
+        if (!hasRestoredPosition && document.documentElement.offsetHeight >= scrollPosition) {
+            window.scrollTo(0, scrollPosition);
+            setHasRestoredPosition(true); // ensure this only triggers once
+        } else if (!hasRestoredPosition && hasMoreGames) {
+            // If we haven't restored the position and there are more games, fetch the next page
+            fetchGames(page + 1);
+        }
     } catch (err) {
-      console.error(err);
+        console.error(err);
     }
-  };
+};
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -109,7 +119,7 @@ const GameList = () => {
 
     fetchGames();
     fetchCategories();
-  }, [language]);
+  }, [language, scrollPosition]);
 
   useEffect(() => {
     const handleLanguageChange = () => {
@@ -221,7 +231,10 @@ const GameList = () => {
           <ul>
             {filteredGames().map((game) => (
               <li key={game.id}>
-                <Link to={`/games/${game.id}`}>
+                <Link 
+                    to={`/games/${game.id}`} 
+                    onClick={() => setScrollPosition(window.scrollY)}
+                >
                   <div className="img-wrapper">
                     <img
                       src={`${config.API_BASE_URL}/${game.image}`}
