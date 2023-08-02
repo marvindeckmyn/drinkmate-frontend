@@ -34,56 +34,52 @@
   }
 }
 
-.notification-popup {
-  display: flex; // sets the display mode to flex
-  flex-direction: column; // arranges child elements (the p and button) vertically
-  justify-content: center; // centers the content vertically
-  align-items: center; // centers the content horizontally
+.katermodus-icon {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 30px;
-  background-color: $light-purple;
-  color: $white;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1000;  
-  max-width: 80%;  
-  text-align: center; 
-  line-height: 1.5; 
+  bottom: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 
-  p {
-    margin-bottom: 20px; 
+  .icon-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px; 
+      height: 50px;
+      border-radius: 50%; 
+      background-color: #444; // Default dark background for circle
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      
+      i {
+          font-size: 1.5em; 
+          color: #FFF; // Cat is in a dimmed state by default
+      }
   }
 
-  button {
-    padding: 12px 24px;
-    background-color: $dark-purple;
-    color: $white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    outline: none;
+  &.active .icon-circle {
+      background-color: #333; // Darker circle when Katermodus is active
+      
+      i {
+          color: #999; // Cat is bright white when Katermodus is active
+      }
+  }
 
-    &:hover {
-      background-color: $hover-color;
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
+  @media (max-width: 768px) {
+      bottom: 70px;
   }
 }
 
-@media (max-width: 767px) {
-  .notification-popup {
-    padding: 20px; // reduce padding on mobile for more space
-    max-width: 100%; // allow the notification to be a bit wider on mobile screens
-  }
+.ReactModal__Content.ReactModal__Content--after-open {
+  background: $dark-bg !important;  // Use the dark background variable
+  color: $dark-text;  // Apply dark text color
+  border: 1px solid $dark-accent;  // If you want the border to match dark mode
 }
 
-
-
+body {
+  &.katermodus {
+    background-color: $dark-bg;
+    color: $dark-text;
+  }
+}

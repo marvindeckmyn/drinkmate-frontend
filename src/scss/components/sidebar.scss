@@ -161,3 +161,53 @@
     height: auto;
   }
 }
+
+body.katermodus {
+  .menu-icon span {
+    background-color: $dark-mode-menu-icon;
+  }
+
+  .menu-icon:hover span {
+    background-color: $dark-mode-hover;
+  }
+
+  .sidebar img {
+    filter: brightness(0.1);
+  }
+
+  .sidebar {
+    background-color: $dark-mode-sidebar-bg;
+    color: $dark-text;
+
+    h1,
+    ul li a,
+    ul li button.logout-button {
+      color: $dark-text;
+
+      &:hover {
+        color: $dark-mode-hover;
+      }
+    }
+
+    ul li ul li a,
+    ul li ul li button {
+      &:hover {
+        color: $dark-mode-hover;
+      }
+    }
+  }
+
+  .mobile-navbar {
+    background-color: $dark-mode-sidebar-bg;
+
+    ul li a,
+    ul li button {
+      color: $dark-text;
+
+      &:hover,
+      &.active {
+        color: $dark-mode-hover;
+      }
+    }
+  }
+}

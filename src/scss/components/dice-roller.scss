@@ -114,3 +114,21 @@
     }
   }
 }
+
+// Dark mode adjustments for .diceroller
+body.katermodus {
+  .diceroller {
+    h1, h2, p {
+      color: $dark-text;
+    }
+
+    button, .dice-buttons button {
+      background-color: $dark-button-bg;
+      color: $dark-button-text;
+
+      &:hover {
+        background-color: $dark-mode-hover;
+      }
+    }
+  }
+}

@@ -275,3 +275,72 @@
     display: none;
   }
 }
+
+body.katermodus {
+  .game-list {
+    .search-bar {
+      border-color: $dark-accent;
+      
+      &:focus {
+        border-color: $dark-text;
+      }
+    }
+    .search-icon {
+      color: $dark-accent;
+    }
+    .filter-toggle {
+      color: $dark-accent;
+      
+      &:hover {
+        color: $dark-text;
+      }
+    }
+    .new-indicator {
+      color: $dark-accent;
+    }
+    .category-filter {
+      input[type='checkbox'] {
+        border-color: $dark-accent;
+        
+        &:hover {
+          border-color: $dark-text;
+        }
+      
+        &:checked {
+          background-color: $dark-accent;
+          border-color: $dark-accent;
+        }
+        
+        &:checked:hover {
+          background-color: $dark-text;
+          border-color: $dark-text;
+        }
+      }
+    }
+    ul li a {
+      color: $dark-text;
+
+      &:hover {
+        color: $dark-accent;
+      }
+
+      .game-details {
+        color: $dark-accent;
+      }
+    }
+    .rc-slider {
+      .rc-slider-handle {
+        border-color: $dark-accent;
+        background-color: $dark-accent;
+
+        &:active,
+        &:focus {
+          box-shadow: 0 0 5px $dark-text;
+        }
+      }
+      .rc-slider-track {
+        background-color: $dark-accent;
+      }
+    }
+  }
+}

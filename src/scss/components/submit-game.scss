@@ -69,3 +69,39 @@
     }
   }
 }
+
+body.katermodus {
+  .submit-game {
+
+    h1 {
+      color: $dark-text;
+    }
+
+    form {
+      input,
+      textarea,
+      select {
+        background-color: $dark-input-bg;
+        color: $dark-input-text;
+        border-color: $dark-input-border;
+
+        &:focus {
+          border-color: $dark-purple;  // Or another variable if you'd like to change this in dark mode
+        }
+
+        &::placeholder {
+          color: $dark-placeholder;
+        }
+      }
+
+      button {
+        background-color: $dark-button-bg;
+        color: $dark-button-text;
+
+        &:hover {
+          background-color: $dark-mode-hover;
+        }
+      }
+    }
+  }
+}

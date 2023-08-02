@@ -25,6 +25,7 @@ function App({ router: Router = BrowserRouter}) {
   const [authToken, setAuthToken] = useState(initialToken);
   const [isAdmin, setIsAdmin] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
+  const [katermodus, setKatermodus] = useState(localStorage.getItem('katermodus') === 'true' || false);
 
   const handleLogin = useCallback((userId, isAdmin) => {
     setCurrentUserId(userId);
@@ -71,6 +72,16 @@ function App({ router: Router = BrowserRouter}) {
     }
   }, [authToken, fetchCurrentUser]);
 
+  useEffect(() => {
+    localStorage.setItem('katermodus', katermodus);
+    if (katermodus) {
+      document.body.classList.add('katermodus');
+    } else {
+      document.body.classList.remove('katermodus');
+    }
+  }, [katermodus]);
+  
+
   if (!authToken) {
     return (
       <Router>
@@ -87,6 +98,11 @@ function App({ router: Router = BrowserRouter}) {
             <Route path="/login" element={<Login setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
             <Route path="/register" element={<Register setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
           </Routes>
+          <button className={`katermodus-icon ${katermodus ? "active" : ""}`} onClick={() => setKatermodus(prev => !prev)} aria-label="Toggle Katermodus">
+              <div className="icon-circle">
+                  <i className="fas fa-cat"></i>
+              </div>
+          </button>
         </div>
       </Router>
     );
@@ -113,6 +129,11 @@ function App({ router: Router = BrowserRouter}) {
             <Route path="/submit-game" element={<SubmitGame authToken={authToken} />} />
             <Route path="/dice" element={<DiceRoller />} />
           </Routes>
+          <button className={`katermodus-icon ${katermodus ? "active" : ""}`} onClick={() => setKatermodus(prev => !prev)} aria-label="Toggle Katermodus">
+            <div className="icon-circle">
+                <i className="fas fa-cat"></i>
+            </div>
+        </button>
         </div>
       </Router>
     );

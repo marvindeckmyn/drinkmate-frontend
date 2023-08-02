@@ -36,3 +36,23 @@
     display: none;
   }
 }
+
+body.katermodus {
+  .header {
+    background-color: $dark-mode-sidebar-bg;
+    color: $dark-text;
+
+    .title {
+      color: $dark-text;
+    }
+
+    .language-switcher button {
+      color: $dark-text;
+
+      &:hover {
+        color: $dark-mode-hover;
+      }
+    }
+  }
+}
+

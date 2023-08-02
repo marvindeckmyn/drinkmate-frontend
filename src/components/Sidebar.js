@@ -53,7 +53,7 @@ const Sidebar = ({ isAdmin, isLoggedIn, handleLogout }) => {
             </li>
           )}
         </ul>
-        
+
         <div className="bottom-elements">
           <img src="/logo512.png" alt="Your Logo" className="logo" />
           <LanguageSwitcher />

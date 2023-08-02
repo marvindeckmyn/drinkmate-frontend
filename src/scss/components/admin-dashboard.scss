@@ -21,7 +21,7 @@
       flex-direction: row;
       justify-content: left;
     }
-    
+
     gap: 1rem;
     margin-bottom: 1rem;
 
@@ -36,7 +36,7 @@
       border: none;
       outline: none;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      
+
       &:hover {
         background-color: $hover-color;
         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
@@ -44,6 +44,31 @@
 
       &:active {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+// Dark mode adjustments
+body.katermodus {
+  .admin-dashboard {
+    h1 {
+      color: $dark-text;
+    }
+
+    .admin-navigation {
+      button {
+        background-color: $dark-text;
+        color: $dark-bg;
+
+        &:hover {
+          background-color: $dark-accent;
+          box-shadow: 0 6px 8px rgba($dark-text, 0.1);
+        }
+
+        &:active {
+          box-shadow: 0 2px 4px rgba($dark-text, 0.1);
+        }
       }
     }
   }

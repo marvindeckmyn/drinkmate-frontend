@@ -31,12 +31,12 @@
           flex-wrap: wrap;
           align-items: center;
           gap: 0.5rem;
-  
+
           .username-email {
             flex-grow: 1;
           }
         }
-        
+
         button {
           background-color: $light-purple;
           color: $white;
@@ -49,7 +49,7 @@
           border: none;
           outline: none;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          
+
           &:hover {
             background-color: $hover-color;
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
@@ -63,6 +63,49 @@
             background-color: $grey;
             cursor: not-allowed;
             box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark mode adjustments
+body.katermodus {
+  .admin-general {
+    h1,
+    .manage-user-admin-privileges h2 {
+      color: $dark-text;
+    }
+
+    .manage-user-admin-privileges {
+      ul {
+        li {
+          .user-info {
+            color: $dark-secondary-text;
+
+            .username-email {
+              color: $dark-text;
+            }
+          }
+
+          button {
+            background-color: $dark-button-bg;
+            color: $dark-button-text;
+
+            &:hover {
+              background-color: $dark-accent;
+              box-shadow: 0 6px 8px rgba($dark-text, 0.1);
+            }
+
+            &:active {
+              box-shadow: 0 2px 4px rgba($dark-text, 0.1);
+            }
+
+            &:disabled {
+              background-color: $dark-disabled-bg;
+              color: $dark-disabled-text;
+            }
           }
         }
       }

@@ -79,3 +79,50 @@
     }
   }
 }
+
+// Dark mode adjustments
+body.katermodus {
+  .login {
+    h1 {
+      color: $dark-text;
+    }
+
+    form {
+      input {
+        color: $dark-text;
+        background-color: $dark-bg;
+        border-color: $dark-accent;
+        
+        &::placeholder {
+          color: $dark-accent;
+        }
+
+        &:focus {
+          border-color: $dark-text;
+          outline-color: $dark-accent;
+        }
+      }
+
+      button {
+        background-color: $dark-text;
+        color: $dark-bg;
+
+        &:hover {
+          background-color: $dark-accent;
+        }
+      }
+    }
+
+    p {
+      color: $dark-text;
+
+      a {
+        color: $dark-accent;
+
+        &:hover {
+          color: $dark-text;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,27 @@
+// Existing Variables
 $light-purple: #683cb2;
 $dark-purple: #34217c;
 $white: #fffefe;
 $hover-color: #9575cd;
 $secondary-color: #d1c4e9;
 $grey: #999;
+
+// Dark Mode Colors
+$dark-bg: #282c36;
+$dark-text: #e0e0e0;
+$dark-accent: #5c6375;
+$dark-button-text: #f5f5f5;
+$dark-secondary-text: #808080;
+$dark-button-bg: #444;
+$dark-disabled-bg: #333;
+$dark-disabled-text: #666;
+$dark-mode-sidebar-bg: darken($light-purple, 40%);
+$dark-mode-menu-icon: $dark-text;
+$dark-mode-hover: $dark-accent;
+$dark-mode-header-bg: darken($light-purple, 30%);
+
+// Additional Variables
+$dark-input-bg: lighten($dark-bg, 5%);            // Slightly lighter than the main background for some contrast.
+$dark-input-text: $dark-text;                     // Reusing the main dark text color.
+$dark-input-border: $dark-secondary-text;         // Using the secondary text color for borders.
+$dark-placeholder: lighten($dark-text, 20%);      // A lighter version of the main text for placeholder text.

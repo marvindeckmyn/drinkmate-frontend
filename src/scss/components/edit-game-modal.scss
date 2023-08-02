@@ -81,3 +81,41 @@
     }
   }
 }
+
+// Dark mode adjustments for .edit-game-modal-yes
+body.katermodus {
+  .edit-game-modal-yes {
+    label {
+      color: $dark-text;
+    }
+
+    select, 
+    input[type="text"], 
+    input[type="number"], 
+    input[type="file"], 
+    .Editor {
+      background-color: $dark-input-bg;
+      color: $dark-input-text;
+      border-color: $dark-input-border;
+      
+      &::placeholder {
+        color: $dark-placeholder;
+      }
+    }
+
+    button {
+      background-color: $dark-button-bg;
+      color: $dark-button-text;
+
+      &:hover {
+        background-color: $dark-mode-hover;
+      }
+
+      &:disabled {
+        background-color: $dark-disabled-bg;
+        color: $dark-disabled-text;
+      }
+    }
+  }
+}
+

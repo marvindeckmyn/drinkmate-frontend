@@ -132,3 +132,39 @@
     }
   }
 }
+
+body.katermodus {
+  background-color: $dark-bg;  // If you want the whole component to have a dark background
+
+  h1, p.alias {
+    color: $dark-text;
+  }
+
+  h2 {
+    color: $dark-secondary-text;
+  }
+
+  .img-wrapper img {
+    // Just a suggestion: adding a subtle border to images can enhance visibility in dark mode.
+    border: 1px solid $dark-accent;
+  }
+
+  p.alias {
+    color: $dark-text;
+  }
+
+  .content-container {
+    background-color: lighten($dark-bg, 5%); // To ensure the container stands out subtly against the component's background.
+    color: $dark-text;
+
+    p, p ul li {
+      color: $dark-text;
+    }
+  }
+
+  ul.necessities-list li {
+    background-color: $dark-button-bg;
+    color: $dark-button-text;
+  }
+}
+
