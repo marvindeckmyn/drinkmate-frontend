@@ -82,4 +82,13 @@ body {
     background-color: $dark-bg;
     color: $dark-text;
   }
+
+  .katermodus-icon {
+    transition: transform 0.3s ease-in-out;
+  
+    &.hidden {
+      transform: translateY(100%);
+    }
+  }
+  
 }

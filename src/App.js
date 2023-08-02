@@ -17,9 +17,12 @@ import GameDetails from './components/GameDetails';
 import Header from './components/Header';
 import DiceRoller from './components/DiceRoller';
 import './scss/main.scss';
+import useHeaderVisibility from './components/hooks/useHeaderVisibility';
+
 
 function App({ router: Router = BrowserRouter}) {
   const initialToken = localStorage.getItem('authToken') || '';
+  const headerVisible = useHeaderVisibility();
   
   const [error, setError] = useState(null);
   const [authToken, setAuthToken] = useState(initialToken);
@@ -98,7 +101,7 @@ function App({ router: Router = BrowserRouter}) {
             <Route path="/login" element={<Login setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
             <Route path="/register" element={<Register setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
           </Routes>
-          <button className={`katermodus-icon ${katermodus ? "active" : ""}`} onClick={() => setKatermodus(prev => !prev)} aria-label="Toggle Katermodus">
+          <button className={`katermodus-icon ${katermodus ? "active" : ""} ${headerVisible ? "" : "hidden"}`} onClick={() => setKatermodus(prev => !prev)} aria-label="Toggle Katermodus">
               <div className="icon-circle">
                   <i className="fas fa-cat"></i>
               </div>
@@ -129,7 +132,7 @@ function App({ router: Router = BrowserRouter}) {
             <Route path="/submit-game" element={<SubmitGame authToken={authToken} />} />
             <Route path="/dice" element={<DiceRoller />} />
           </Routes>
-          <button className={`katermodus-icon ${katermodus ? "active" : ""}`} onClick={() => setKatermodus(prev => !prev)} aria-label="Toggle Katermodus">
+          <button className={`katermodus-icon ${katermodus ? "active" : ""} ${headerVisible ? "" : "hidden"}`} onClick={() => setKatermodus(prev => !prev)} aria-label="Toggle Katermodus">
             <div className="icon-circle">
                 <i className="fas fa-cat"></i>
             </div>
