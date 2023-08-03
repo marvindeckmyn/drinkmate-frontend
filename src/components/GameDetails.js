@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 
 const GameDetails = ({ authToken }) => {
   const [game, setGame] = useState(null);
-  const { slug, language_code } = useParams();
+  const { slug, language_code, id } = useParams();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [translatedSlugs, setTranslatedSlugs] = useState({});
@@ -35,25 +35,26 @@ const GameDetails = ({ authToken }) => {
             'x-auth-token': authToken,
           },
         });
-
+    
         setGame(response.data);
         setTranslatedSlugs(response.data.translatedSlugs || {});
+        updateClickCount(response.data.id);  // Use the ID from the fetched game data
       } catch (err) {
         console.error(err);
       }
     };
+    
     fetchGame();
 
-    const updateClickCount = async () => {
+    const updateClickCount = async (gameId) => {
       try {
-        await axios.put(`${config.API_BASE_URL}/api/${language_code}/games/${slug}/click`);
+        await axios.put(`${config.API_BASE_URL}/api/games/${gameId}/click`);
       } catch (err) {
         console.error("Error updating click count: ", err);
       }
     }
-    updateClickCount();
 
-  }, [authToken, slug, language_code, navigate]);
+  }, [authToken, slug, language_code, navigate, id]);
 
   const getTranslatedName = (translations, defaultValue) => {
     if (translations && translations.length > 0) {
