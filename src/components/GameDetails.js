@@ -97,10 +97,10 @@ const GameDetails = ({ authToken }) => {
   return (
     <><Helmet>
       <title>{getTranslatedName(game.translations, game.name)}</title>
-      <meta name="description" content={getTranslatedDescription(game.descriptions, game.description)} />
-      <meta property="title" content={getTranslatedName(game.translations, game.name)} />
-      <meta property="image" content={`${config.API_BASE_URL}/${game.image}`} />
-      <meta property="url" content={window.location.href} />
+      <meta name="og:description" content={getTranslatedDescription(game.descriptions, game.description)} />
+      <meta property="og:title" content={getTranslatedName(game.translations, game.name)} />
+      <meta property="og:image" content={`${config.API_BASE_URL}/${game.image}`} />
+      <meta property="og:url" content={window.location.href} />
       {['en', 'nl', 'de', 'fr', 'it', 'es'].map(lang => (
         <link 
           key={lang}
