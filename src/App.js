@@ -19,7 +19,6 @@ import DiceRoller from './components/DiceRoller';
 import './scss/main.scss';
 import useHeaderVisibility from './components/hooks/useHeaderVisibility';
 
-
 function App({ router: Router = BrowserRouter}) {
   const initialToken = localStorage.getItem('authToken') || '';
   const headerVisible = useHeaderVisibility();
@@ -95,7 +94,7 @@ function App({ router: Router = BrowserRouter}) {
           <Routes>
             <Route path="/" element={<GameList />} />
             <Route path="/games" element={<GameList />} />
-            <Route path="/games/:id" element={<GameDetails />} />
+            <Route path="/:language_code/games/:slug" element={<GameDetails />} />
             <Route path="/submit-game" element={<SubmitGame />} />
             <Route path="/dice" element={<DiceRoller />} />
             <Route path="/login" element={<Login setAuthToken={setAuthToken} setIsAdmin={setIsAdmin} handleLogin={handleLogin} />} />
@@ -119,7 +118,7 @@ function App({ router: Router = BrowserRouter}) {
           <Routes>
             <Route path="/" element={<GameList />} />
             <Route path="/games" element={<GameList />} />
-            <Route path="/games/:id" element={<GameDetails authToken={authToken} />} />
+            <Route path="/:language_code/games/:slug" element={<GameDetails authToken={authToken} />} />
             {isAdmin && (
               <Route path="/admin" element={<AdminDashboard />}>
                 <Route path="general" element={<AdminGeneral authToken={authToken} currentUserId={currentUserId} />} />

@@ -76,8 +76,8 @@ const GameList = () => {
 
   const fetchGames = useCallback(async (page = 1) => {
     try {
-        const response = await axios.get(`${config.API_BASE_URL}/api/games?page=${page}&limit=${LIMIT}&search=${search}`);
-        const fetchedGames = response.data.games;
+      const response = await axios.get(`${config.API_BASE_URL}/api/games?page=${page}&limit=${LIMIT}&search=${search}&language=${language}`);
+      const fetchedGames = response.data.games;
         const minCount = Math.min(...fetchedGames.map((game) => game.player_count));
         const maxCount = Math.max(...fetchedGames.map((game) => game.player_count));
 
@@ -100,9 +100,10 @@ const GameList = () => {
     } catch (err) {
         console.error(err);
     }
-}, [hasMoreGames, scrollPosition, hasRestoredPosition, search]); 
+}, [search, language, hasRestoredPosition, scrollPosition, hasMoreGames]); 
 
   useEffect(() => {
+    fetchGames();
     const fetchCategories = async () => {
       try {
         const response = await axios.get(`${config.API_BASE_URL}/api/categories`);
@@ -112,13 +113,14 @@ const GameList = () => {
       }
     };
 
-    fetchGames();
     fetchCategories();
   }, [fetchGames, language, scrollPosition]);
 
   useEffect(() => {
     const handleLanguageChange = () => {
       setLanguage(i18n.language);
+      setGames([]);
+      setCurrentPage(1);
     };
 
     i18n.on('languageChanged', handleLanguageChange);
@@ -229,7 +231,7 @@ const GameList = () => {
             {filteredGames().map((game) => (
               <li key={game.id}>
                 <Link 
-                    to={`/games/${game.id}`} 
+                    to={`/${i18n.language}/games/${game.slug}`} 
                     onClick={() => setScrollPosition(window.scrollY)}
                 >
                   <div className="img-wrapper">
